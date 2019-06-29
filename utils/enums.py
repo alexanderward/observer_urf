@@ -3,7 +3,7 @@ from .base import BaseEnum
 
 class Region(BaseEnum):
     NA1 = "NA1"
-    EUN1 = "EUN1"
+    # EUN1 = "EUN1"  # Disabled for now.  Can't connect for some reason
     EUW1 = "EUW1"
     KR = "KR"
     LA1 = "LA1"
