@@ -1,9 +1,11 @@
+import json
 import pprint
 import subprocess
 import sys
 import time
 
 import keyboard
+import requests
 from requests import HTTPError
 from riotwatcher import RiotWatcher
 
@@ -69,15 +71,51 @@ class Game(object):
                 time.sleep(5)
         pprint.pprint(stats)
 
+    def get_pregame_stats(self):
+        # Can use these details as a bot command since participants not in rendered order
+        # team 200  = bottom loading / red team / top side
+        # team 100 = top loading / blue team / bottom side
+        teams = {100: dict(players=[], win_rate=None, highest_league=None),
+                 200: dict(players=[], win_rate=None, highest_league=None)}
+
+        leagues = Leagues.get_names()
+        for participant in self.game['participants']:
+            summoner = self.api.summoner.by_name(self.game.get("platformId"), participant.get("summonerName"))
+            player_stats = self.api.league.by_summoner(self.game.get("platformId"), summoner.get("id"))[0]
+            win_rate = (float(player_stats["wins"]) / float(player_stats["losses"] + player_stats["wins"])) * 100
+            player = dict(stats=player_stats, summoner=summoner, winrate=win_rate)
+            teams[participant.get('teamId')]['players'].append(player)
+            if teams[participant.get('teamId')]['win_rate'] is None:
+                teams[participant.get('teamId')]['win_rate'] = win_rate
+            else:
+                tmp = [teams[participant.get('teamId')]['win_rate'], win_rate]
+                teams[participant.get('teamId')]['win_rate'] = sum(tmp) / len(tmp)
+            if teams[participant.get('teamId')]['highest_league'] is None:
+                teams[participant.get('teamId')]['highest_league'] = Leagues[player_stats["tier"]].name
+            else:
+                index = leagues.index(teams[participant.get('teamId')]['highest_league'])
+                new_index = leagues.index(player_stats["tier"])
+                if new_index < index:
+                    teams[participant.get('teamId')]['highest_league'] = Leagues[player_stats["tier"]].name
+        # pprint.pprint(teams)
+        # todo - Use each team's emblem of highest league in overlay
+        # todo - Use each team's win% in overlay
+        
 
 class LeagueAPI(object):
     regions = Region.get_names()
     leagues = Leagues.get_names()
     match_types = MatchTypes.get_names()
     featured_games = {}
+    champions = {}
 
     def __init__(self, key):
         self.api = RiotWatcher(key)
+        version = requests.get("https://ddragon.leagueoflegends.com/api/versions.json").json()[0]
+        champions_data = requests.get("https://ddragon.leagueoflegends.com/cdn/{}/data/en_US/champion.json"
+                                      "".format(version)).json()
+        for key, value in champions_data['data'].items():
+            self.champions[value["key"]] = value
 
     def get_featured_games(self):
         for region in self.regions:
@@ -126,20 +164,28 @@ class LeagueAPI(object):
                     return Game(get_random_item(self.featured_games[match_type][region]), self.api)
 
 
-def run():
-    api = LeagueAPI("RGAPI-c68037fc-1718-4186-a60b-5b7b897ac757")
-    # while True:
-    game = api.find_game()
-    pprint.pprint(game.game)
+def run(debug=False):
+    api = LeagueAPI("RGAPI-ab152ff6-4bea-4257-ba52-9f6a5a78428a")
 
-    error = game.spectate()
-    if not error:
-        game.get_stats()
-    # print("Waiting a minute")
-    # time.sleep(60)
+    if not debug:
+        while True:
+            game = api.find_game()
+            pprint.pprint(game.game)
+
+            error = game.spectate()
+            if not error:
+                game.get_stats()
+            break
+            print("Waiting a minute")
+            time.sleep(60)
+    else:
+        with open("notes/game.json", 'r') as f:
+            game = Game(json.load(f), api.api)  # use this to get the currentAccountID & get playerHistory
+        game.get_pregame_stats()
+        # game.get_stats()
 
 
 if __name__ == "__main__":
     # import timeit
     # print(timeit.timeit("run()", setup="from __main__ import run", number=1))
-    run()
+    run(debug=False)
