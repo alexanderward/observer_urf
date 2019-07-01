@@ -9,20 +9,28 @@ import requests
 from requests import HTTPError
 from riotwatcher import RiotWatcher
 
-from utils.enums import Region, MatchTypes, Leagues
-from utils.misc_functions import get_random_item, sort_list
-from utils.threading import RepeatedTimer
+from spectator.utils.enums import Region, MatchTypes, Leagues
+from spectator.utils.misc_functions import get_random_item, sort_list
+from spectator.utils.interval import RepeatedTimer
+from spectator.utils.rest_api import send_pregame_stats
 
 
 class Game(object):
+    champions = {}
+
     def __init__(self, game, api):
+        version = requests.get("https://ddragon.leagueoflegends.com/api/versions.json").json()[0]
+        champions_data = requests.get("https://ddragon.leagueoflegends.com/cdn/{}/data/en_US/champion.json"
+                                      "".format(version)).json()
+        for key, value in champions_data['data'].items():
+            self.champions[value["key"]] = value
         self.game = game
         self.api = api
         self.proc = None
         self.hud_view_toggle = RepeatedTimer(30, lambda: keyboard.send("x"))
 
     def spectate(self):
-        from utils.enums import SpectatorGrid
+        from spectator.utils.enums import SpectatorGrid
         url, port = SpectatorGrid[self.game['platformId']].value
         cmd = r'cd "C:\Riot Games\League of Legends\Game" && "League of Legends.exe" "8394" ' \
               r'"LeagueClient.exe" "" "' \
@@ -51,7 +59,7 @@ class Game(object):
                 keyboard.send('n')
                 keyboard.send('u')
                 keyboard.send('d')
-                self.hud_view_toggle.start()
+                # self.hud_view_toggle.start()
 
     def kill(self, error=False):
         if self.proc:
@@ -61,7 +69,7 @@ class Game(object):
             subprocess.Popen("TASKKILL /F /PID {pid} /T".format(pid=self.proc.pid))
         return error
 
-    def get_stats(self):
+    def send_postgame_stats(self):
         stats = None
         while not stats:
             try:
@@ -71,51 +79,59 @@ class Game(object):
                 time.sleep(5)
         pprint.pprint(stats)
 
-    def get_pregame_stats(self):
+    def send_pregame_stats(self):
         # Can use these details as a bot command since participants not in rendered order
         # team 200  = bottom loading / red team / top side
         # team 100 = top loading / blue team / bottom side
-        teams = {100: dict(players=[], win_rate=None, highest_league=None),
-                 200: dict(players=[], win_rate=None, highest_league=None)}
+        teams = {100: dict(players=[], win_rate=None),
+                 200: dict(players=[], win_rate=None)}
+        highest_league = None
 
         leagues = Leagues.get_names()
         for participant in self.game['participants']:
             summoner = self.api.summoner.by_name(self.game.get("platformId"), participant.get("summonerName"))
             player_stats = self.api.league.by_summoner(self.game.get("platformId"), summoner.get("id"))[0]
             win_rate = (float(player_stats["wins"]) / float(player_stats["losses"] + player_stats["wins"])) * 100
-            player = dict(stats=player_stats, summoner=summoner, winrate=win_rate)
+            player = dict(league=player_stats["tier"],
+                          summoner=summoner['name'], win_rate=win_rate,
+                          champion=self.champions[str(participant['championId'])]['name'],
+                          hot_streak=player_stats["hotStreak"])
             teams[participant.get('teamId')]['players'].append(player)
             if teams[participant.get('teamId')]['win_rate'] is None:
                 teams[participant.get('teamId')]['win_rate'] = win_rate
             else:
                 tmp = [teams[participant.get('teamId')]['win_rate'], win_rate]
                 teams[participant.get('teamId')]['win_rate'] = sum(tmp) / len(tmp)
-            if teams[participant.get('teamId')]['highest_league'] is None:
-                teams[participant.get('teamId')]['highest_league'] = Leagues[player_stats["tier"]].name
+            if highest_league is None:
+                highest_league = Leagues[player_stats["tier"]].name
             else:
-                index = leagues.index(teams[participant.get('teamId')]['highest_league'])
+                index = leagues.index(highest_league)
                 new_index = leagues.index(player_stats["tier"])
                 if new_index < index:
-                    teams[participant.get('teamId')]['highest_league'] = Leagues[player_stats["tier"]].name
-        # pprint.pprint(teams)
-        # todo - Use each team's emblem of highest league in overlay
-        # todo - Use each team's win% in overlay
-        
+                    highest_league = Leagues[player_stats["tier"]].name
+
+        stats = {"league": highest_league,
+                 "teams": teams,
+                 "region": self.game['platformId'],
+                 "game_id": self.game.get("gameId"),
+                 "banned_champions": [{"champion": self.champions[str(item['championId'])]['name']
+                 if item['championId']
+                                                                                                      > 0 else "Skipped",
+                                       "order": item['pickTurn'], "team_id": item['teamId']}
+                                      for item in self.game.get('bannedChampions', [])],
+                 "game_type": self.game.get("gameQueueConfigId"),
+                 }
+        send_pregame_stats(stats)
+
 
 class LeagueAPI(object):
     regions = Region.get_names()
     leagues = Leagues.get_names()
     match_types = MatchTypes.get_names()
     featured_games = {}
-    champions = {}
 
     def __init__(self, key):
         self.api = RiotWatcher(key)
-        version = requests.get("https://ddragon.leagueoflegends.com/api/versions.json").json()[0]
-        champions_data = requests.get("https://ddragon.leagueoflegends.com/cdn/{}/data/en_US/champion.json"
-                                      "".format(version)).json()
-        for key, value in champions_data['data'].items():
-            self.champions[value["key"]] = value
 
     def get_featured_games(self):
         for region in self.regions:
@@ -165,23 +181,22 @@ class LeagueAPI(object):
 
 
 def run(debug=False):
-    api = LeagueAPI("RGAPI-ab152ff6-4bea-4257-ba52-9f6a5a78428a")
+    api = LeagueAPI("RGAPI-2d8ab77e-af75-4e42-9bcf-32ca8a3d575f")
 
     if not debug:
         while True:
             game = api.find_game()
-            pprint.pprint(game.game)
-
+            game.send_pregame_stats()
             error = game.spectate()
             if not error:
-                game.get_stats()
-            break
-            print("Waiting a minute")
-            time.sleep(60)
+                game.send_postgame_stats()
+            # break
+            # print("Waiting a minute")
+            # time.sleep(60)
     else:
         with open("notes/game.json", 'r') as f:
             game = Game(json.load(f), api.api)  # use this to get the currentAccountID & get playerHistory
-        game.get_pregame_stats()
+        game.send_pregame_stats()
         # game.get_stats()
 
 
