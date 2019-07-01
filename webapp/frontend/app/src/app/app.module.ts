@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LeagueComponent } from './components/overlay/league/league.component';
-import { WinPercentageComponent } from './components/overlay/win-percentage/win-percentage.component';
+import { OddsComponent } from './components/overlay/odds/odds.component';
 import { RouterModule } from '@angular/router';
 import { LatestGameService } from './services/latest-game.service';
 import { LatestGameResolver } from './components/overlay/latest-game.resolver';
@@ -22,6 +22,11 @@ export const routes = [
               component: LeagueComponent,
               resolve: { game: LatestGameResolver }
           },
+          {
+            path: 'odds/:team_id',
+            component: OddsComponent,
+            resolve: { game: LatestGameResolver }
+        },
       ]
   },
 
@@ -34,7 +39,7 @@ export const routes = [
   declarations: [
     AppComponent,
     LeagueComponent,
-    WinPercentageComponent
+    OddsComponent
   ],
   imports: [
     BrowserModule,

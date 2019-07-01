@@ -5,21 +5,27 @@ import { Game, League } from 'src/app/models/game.model';
 @Component({
   selector: 'app-league',
   template: `
-  <img [src]="imagePath">
+  <img [src]="imagePath" class="center">
+  <h2 class="center large-text">{{league | titlecase}}</h2>
   `,
   styles: [`
-  img { 
-    height: 100%; 
-    width: 100%;
-  }`]
+    .large-text{
+      font-size: 4.5em;
+      color: #edac1e;
+      text-align: center;
+      padding: .15em;
+      margin-top: 0em;
+    }
+  `]
 })
 export class LeagueComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   imagePath: string;
-
+  league: string;
   ngOnInit() {
     let game: Game = this.route.snapshot.data.game as Game;
+    this.league = game.league;
     switch (game.league) {
       case League.GRANDMASTER:
         this.imagePath = "assets/Emblem_Grandmaster.png";
