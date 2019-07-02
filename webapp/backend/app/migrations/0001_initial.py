@@ -69,7 +69,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='game',
-            name='post_game',
+            name='postgame',
             field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='game', to='app.PostgameStats'),
         ),
         migrations.CreateModel(

@@ -15,10 +15,10 @@ import { CarouselComponent } from './shared/carousel/carousel.component';
 import { CarouselItemDirective } from './shared/carousel/carousel-item.directive';
 import { CarouselItemElementDirective } from './shared/carousel/carousel-item-element.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule, MatIconModule } from '@angular/material';
-import { PostgameService } from './services/postgame.service';
-import { PostgameStatsResolver } from './components/overlay/postgame-stats.resolver';
+import { MatButtonModule, MatCheckboxModule, MatIconModule, MatCard, MatCardModule, MatGridListModule } from '@angular/material';
 import { InfoComponent } from './components/overlay/info/info.component';
+import { DdragonService } from './services/ddragon.service';
+import { PostGameResolver } from './components/postgame/ddragonresolver';
 
 
 export const routes = [
@@ -46,9 +46,7 @@ export const routes = [
   {
     path: 'postgame',
     component: SlideshowComponent,
-    resolve: {
-      stats: PostgameStatsResolver
-    }
+    resolve: { data: PostGameResolver }
   }
 
   // Not found
@@ -70,12 +68,12 @@ export const routes = [
     HttpClientModule,
     AppRoutingModule,
     RouterModule.forChild(routes),
-    MatIconModule, MatButtonModule, MatCheckboxModule
+    MatIconModule, MatButtonModule, MatCheckboxModule, MatCardModule, MatGridListModule
   ],
   providers: [
     CommonModule,
     LatestGameResolver, LatestGameService,
-    PostgameService, PostgameStatsResolver
+    DdragonService, PostGameResolver
   ],
   bootstrap: [AppComponent]
 })

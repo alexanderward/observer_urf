@@ -16,6 +16,7 @@ def send_pregame_stats(stats):
                 "summoner_name": player.get("summoner"),
                 "region": stats.get('region'),
                 "champion": player.get("champion"),
+                "champion_url": player.get("champion"),
                 "hot_streak": player.get("hot_streak"),
                 "team_id": int(team),
                 "league": player.get("league"),
@@ -27,7 +28,7 @@ def send_pregame_stats(stats):
         "region": stats.get('region'),
         "league": stats.get('league'),
         "teams": teams,
-        "banned_champions": stats.get("banned_champions"),
+        "version": stats.get("version"),
         "game_participants": players
     }
     # pprint.pprint(data)

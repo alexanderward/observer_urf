@@ -28,8 +28,14 @@ export abstract class HTTPBase {
         return url;
     }
 
-    protected get(path: string = null, queryStrings: {} = null) {
-        const fqdn = this.buildUrl(path, queryStrings);
+    protected get(path: string = null, queryStrings: {} = null, external = false) {
+        let fqdn;
+        if (!external) {
+            fqdn = this.buildUrl(path, queryStrings);
+        } else {
+            fqdn = path;
+        }
+
         return this.http.get(fqdn);
     }
 
@@ -46,5 +52,5 @@ export abstract class HTTPBase {
     protected delete(path) {
         const fqdn = this.buildUrl(path);
         return this.http.delete(fqdn);
-     }
+    }
 }

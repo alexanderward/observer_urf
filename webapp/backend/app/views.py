@@ -43,15 +43,10 @@ class GameViewSet(mixins.CreateModelMixin,
         PostGameSerializer(data=request.data).is_valid(raise_exception=True)
 
         game = self.get_object()
-        game.post_game.data = request.data['data']
-        game.post_game.complete = True
+        game.postgame.data = request.data['data']
+        game.postgame.complete = True
 
-        game.post_game.save()
+        game.postgame.save()
         serializer = self.get_serializer_class()
         return JsonResponse(serializer(game).data)
-
-    @postgame_stats_create.mapping.get
-    def postgame_stats_fetch(self, request, *args, **kwargs):
-        game = self.get_object()
-        return JsonResponse(PostGameSerializer(game.post_game).data)
 

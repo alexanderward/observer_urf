@@ -14,6 +14,10 @@ html, body {margin:0;padding:0;height:100%;overflow: hidden;}
   font-family: 'Montserrat', sans-serif;
 }
 
+.font{
+    font-family: 'Montserrat', sans-serif;
+}
+
 .stats .fa {
   color: #008080;
   font-size: 200px;

@@ -19,9 +19,9 @@ class Game(object):
     champions = {}
 
     def __init__(self, game, api):
-        version = requests.get("https://ddragon.leagueoflegends.com/api/versions.json").json()[0]
+        self.version = requests.get("https://ddragon.leagueoflegends.com/api/versions.json").json()[0]
         champions_data = requests.get("https://ddragon.leagueoflegends.com/cdn/{}/data/en_US/champion.json"
-                                      "".format(version)).json()
+                                      "".format(self.version)).json()
         for key, value in champions_data['data'].items():
             self.champions[value["key"]] = value
         self.game = game
@@ -92,9 +92,10 @@ class Game(object):
             summoner = self.api.summoner.by_name(self.game.get("platformId"), participant.get("summonerName"))
             player_stats = self.api.league.by_summoner(self.game.get("platformId"), summoner.get("id"))[0]
             win_rate = (float(player_stats["wins"]) / float(player_stats["losses"] + player_stats["wins"])) * 100
+            champion = self.champions[str(participant['championId'])]
             player = dict(league=player_stats["tier"],
                           summoner=summoner['name'], win_rate=win_rate,
-                          champion=self.champions[str(participant['championId'])]['name'],
+                          champion=champion['name'],
                           hot_streak=player_stats["hotStreak"])
             teams[participant.get('teamId')]['players'].append(player)
             if teams[participant.get('teamId')]['win_rate'] is None:
@@ -114,12 +115,8 @@ class Game(object):
                  "teams": teams,
                  "region": self.game['platformId'],
                  "game_id": self.game.get("gameId"),
-                 "banned_champions": [{"champion": self.champions[str(item['championId'])]['name']
-                 if item['championId']
-                    > 0 else "Skipped",
-                                       "order": item['pickTurn'], "team_id": item['teamId']}
-                                      for item in self.game.get('bannedChampions', [])],
                  "game_type": self.game.get("gameQueueConfigId"),
+                 "version": self.version
                  }
         send_pregame_stats(stats)
 

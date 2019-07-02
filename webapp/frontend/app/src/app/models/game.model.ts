@@ -1,4 +1,4 @@
-export interface Team{
+export interface Team {
     id: string,
     created_at: string,
     team_id: string,
@@ -6,7 +6,7 @@ export interface Team{
     game: string
 }
 
-export interface GameParticipants{
+export interface GameParticipants {
     id: string,
     created_at: string,
     summoner_name: string,
@@ -19,13 +19,18 @@ export interface GameParticipants{
     game: string,
 }
 
-export interface BannedChampions{
+export interface BannedChampions {
     id: string,
     created_at: string,
     champion: string,
     order: number,
     team: Team,
     game: string
+}
+
+export interface Postgame {
+    data: any,
+    complete: boolean
 }
 
 export interface Game {
@@ -35,8 +40,9 @@ export interface Game {
     region: string,
     league: string,
     teams: Team[],
-    bannedChampions: BannedChampions[],
-    gameParticipants: GameParticipants[]
+    game_participants: GameParticipants[],
+    postgame: Postgame,
+    version: string
 }
 
 export enum League {

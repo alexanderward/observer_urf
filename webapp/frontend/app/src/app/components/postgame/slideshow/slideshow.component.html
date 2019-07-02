@@ -1,11 +1,125 @@
-<carousel [timer]=2>
-<!-- <carousel> -->
-    <ng-container *ngFor="let item of items">
-      <ng-container *carouselItem>
-        <div class="item">
-          {{ stats | json }}
+<!-- <carousel [timer]=2> -->
+<carousel>
+  <!-- <ng-container *carouselItem>
+    <div class="slide-item"
+      style="background-repeat: no-repeat; background-size:100%; background-image: url(assets/victor.jpg)">
+      <div class="winner-label font" [ngClass]="winningTeam == 'Red' ? 'red': 'blue'">{{winningTeam}} team victory!
+      </div>
+      <mat-grid-list cols="5" rowHeight="80px" style="margin-top: -2em;">
+        <ng-container *ngFor="let participant of participants">
+          <div *ngIf="participant.won">
+            <mat-grid-tile [colspan]="1" [rowspan]="8" style="margin-top: -1em; overflow: hidden;">
+              <mat-card style="overflow: hidden;">
+                <mat-card-content>
+                  <p style="text-align: center; word-break:keep-all" class="font">
+                    <strong style="font-style: italic">{{participant.champion}}</strong>
+                  </p>
 
+                </mat-card-content>
+                <img mat-card-image
+                  src="https://ddragon.leagueoflegends.com/cdn/img/champion/loading/{{participant.champion.split(' ').join('')}}_0.jpg">
+                <mat-card-content>
+                  <p style="text-align: center; word-break:keep-all;" class="font">
+                    <strong>{{participant.player.summonerName}}</strong>
+                  </p>
+
+                </mat-card-content>
+              </mat-card>
+            </mat-grid-tile>
+          </div>
+        </ng-container>
+      </mat-grid-list>
+    </div>
+  </ng-container> -->
+  <ng-container *carouselItem>
+    <div class="slide-item" style="display: flex; width: 100%"
+      style="background-repeat: no-repeat; background-size:100%; background: black;">
+      <ng-container *ngFor="let participant of participants">
+        <div data-match-id="3074055300" class="ceWbcQ"
+          [ngClass]="participant.teamId == 100 ? 'stats-row-red': 'stats-row-blue'">
+          <div class="jjLgKi">
+            <div class="gqsiOt">
+              <div class="ilTQSY">
+                <img class="stats-image" [src]="participant.championSquare">
+              </div>
+              <div style="width: 30px; margin-left: 10px">{{participant.stats.champLevel}}</div>
+              <div class="jBdYUR stats-section" style="width: 30px;">
+                <div>
+                  <div class="gZcIoh cXapgT summoner-icon">
+                    <img [src]="participant.spell1" class="stats-image eYvKTc summoner-icon">
+                  </div>
+                  <div class="gZcIoh cXapgT summoner-icon">
+                    <img [src]="participant.spell2" class="stats-image eYvKTc summoner-icon">
+                  </div>
+                </div>
+              </div>
+              <div class="jBdYUR stats-section">
+                <div>
+                  <div>
+                    <strong>{{participant.stats.kills}}&nbsp;/&nbsp;{{participant.stats.deaths}}&nbsp;/&nbsp;{{participant.stats.assists}}</strong>
+                  </div>
+                  <div><span style="color: rgb(29, 196, 155);"><strong>{{participant.kda}}</strong></span>
+                    <strong>&nbsp; KDA</strong></div>
+                </div>
+              </div>
+              <div class="jBdYUR stats-section">
+                <div>
+                  <div><span style="color: rgb(29, 196, 155);"><strong>{{participant.stats.totalMinionsKilled}}</strong>
+                    </span> <strong>&nbsp; CS</strong>
+                  </div>
+                  <div><span style="color: rgb(29, 196, 155);"><strong>{{participant.stats.wardsPlaced}}</strong>
+                    </span> <strong>&nbsp; Wards</strong>
+                  </div>
+                </div>
+              </div>
+              <div class="jBdYUR">
+                <div>
+                  <div class="gZcIoh cXapgT summoner-icon">
+                    <img *ngIf="participant.items[0]" [src]="participant.items[0]"
+                      class="stats-image eYvKTc summoner-icon">
+                  </div>
+                  <div class="gZcIoh cXapgT summoner-icon">
+                    <img *ngIf="participant.items[1]" [src]="participant.items[1]"
+                      class="stats-image eYvKTc summoner-icon">
+                  </div>
+                </div>
+              </div>
+              <div class="jBdYUR">
+                <div>
+                  <div class="gZcIoh cXapgT summoner-icon">
+                    <img *ngIf="participant.items[2]" [src]="participant.items[2]"
+                      class="stats-image eYvKTc summoner-icon">
+                  </div>
+                  <div class="gZcIoh cXapgT summoner-icon">
+                    <img *ngIf="participant.items[3]" [src]="participant.items[3]"
+                      class="stats-image eYvKTc summoner-icon">
+                  </div>
+                </div>
+              </div>
+              <div class="jBdYUR">
+                <div>
+                  <div class="gZcIoh cXapgT summoner-icon">
+                    <img *ngIf="participant.items[4]" [src]="participant.items[4]"
+                      class="stats-image eYvKTc summoner-icon">
+                  </div>
+                  <div class="gZcIoh cXapgT summoner-icon">
+                    <img *ngIf="participant.items[5]" [src]="participant.items[5]"
+                      class="stats-image eYvKTc summoner-icon">
+                  </div>
+                </div>
+              </div>
+              <div class="jBdYUR">
+                <div>
+                  <div class="gZcIoh cXapgT summoner-icon">
+                    <img *ngIf="participant.wardItem" [src]="participant.wardItem"
+                      class="stats-image eYvKTc summoner-icon">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </ng-container>
-    </ng-container>
-  </carousel>
+    </div>
+  </ng-container>
+</carousel>
