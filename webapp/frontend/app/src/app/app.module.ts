@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule, MatIconModule } from '@angular/material';
 import { PostgameService } from './services/postgame.service';
 import { PostgameStatsResolver } from './components/overlay/postgame-stats.resolver';
+import { InfoComponent } from './components/overlay/info/info.component';
 
 
 export const routes = [
@@ -26,6 +27,10 @@ export const routes = [
     path: 'overlay',
     // component: LeagueComponent,
     children: [
+      {
+        path: 'info',
+        component: InfoComponent,
+      },
       {
         path: 'league',
         component: LeagueComponent,
@@ -57,7 +62,7 @@ export const routes = [
     LeagueComponent,
     OddsComponent,
     SlideshowComponent,
-    CarouselComponent, CarouselItemDirective, CarouselItemElementDirective
+    CarouselComponent, CarouselItemDirective, CarouselItemElementDirective, InfoComponent
   ],
   imports: [
     BrowserModule,

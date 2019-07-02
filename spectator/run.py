@@ -82,6 +82,7 @@ class Game(object):
         # Can use these details as a bot command since participants not in rendered order
         # team 200  = bottom loading / red team / top side
         # team 100 = top loading / blue team / bottom side
+
         teams = {100: dict(players=[], win_rate=None),
                  200: dict(players=[], win_rate=None)}
         highest_league = None

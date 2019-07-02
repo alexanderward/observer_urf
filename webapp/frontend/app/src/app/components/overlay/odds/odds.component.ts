@@ -2,18 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Game, Team } from 'src/app/models/game.model';
 import { isUndefined } from 'util';
-// <section id="counter-stats" class="wow fadeInRight" data-wow-duration="1.4s">
-// <div class="container">
-//   <div class="row">
 
-//     <div class="col-lg-3 stats">
-//       <i class="fa fa-calculator" aria-hidden="true">Odds</i>
-//       <div>{{odds}}%</div>
-      
-//     </div>
-//   </div>
-// </div>
-// </section>
 @Component({
   selector: 'app-odds',
   template: `

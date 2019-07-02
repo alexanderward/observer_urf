@@ -6,13 +6,6 @@ html, body {margin:0;padding:0;height:100%;overflow: hidden;}
 
 /*/ start count stats /*/
 
-section#counter-stats {
-	display: flex;
-	justify-content: center;
-    background: red;
-    height:100%;
-}
-
 .stats {
   text-align: center;
   font-size: 200px;
@@ -38,14 +31,13 @@ section#counter-stats {
     -ms-flex-direction: column;
     flex-direction: column;
     position: relative;
-    background-color: #fff;
+    background-color: #1e1919;
     -webkit-box-shadow: 0 0 13px 0 rgba(62,44,90,.08);
     box-shadow: 0 0 13px 0 rgba(62,44,90,.08);
     margin-bottom: 1.5rem;
     border-radius: 4px;
-    border: 1px solid rgba(0,0,0,.09);
-    border-bottom: 1px solid #e0e0e0;
-    border-radius: 4px;
+    color: white;
+    border: 15px outset rgb(123, 110, 73);
     -webkit-transition: border .5s ease-out;
     transition: border .5s ease-out;
     font-family: 'Montserrat', sans-serif;
@@ -70,10 +62,6 @@ section#counter-stats {
     margin-right: .66667rem;
 }
 
-.panel-hdr>:first-child {
-    padding-left: 1rem;
-}
-
 .panel-hdr h2 {
     -webkit-box-flex: 1;
     -ms-flex: 1;
@@ -91,6 +79,7 @@ section#counter-stats {
     color: white;
     position: relative;
     font-weight: 500;
+    font-style: italic;
 }
 
 .red{
