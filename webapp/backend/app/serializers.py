@@ -1,16 +1,14 @@
 from rest_framework import serializers
 from drf_writable_nested import WritableNestedModelSerializer
-from app.models import Game, BannedChampions, Team, Participant
+from app.models import Game, BannedChampions, Team, Participant, PostgameStats
 
 
 class BaseSerializer(WritableNestedModelSerializer):
-
     id = serializers.IntegerField(read_only=True)
     created_at = serializers.DateTimeField(read_only=True)
 
 
 class TeamSerializer(BaseSerializer):
-
     team_id = serializers.IntegerField()
     win_rate = serializers.FloatField()
 
@@ -59,9 +57,18 @@ class BannedChampionSerializer(BaseSerializer):
         read_only_fields = ('created_at', 'game')
 
 
+class PostGameSerializer(BaseSerializer):
+    data = serializers.CharField()
+
+    class Meta:
+        model = PostgameStats
+        fields = '__all__'
+
+
 class GameSerializer(BaseSerializer):
 
     def create(self, validated_data):
+        validated_data['post_game'] = PostgameStats.objects.create(data={})
         return super().create(validated_data)
 
     id = serializers.IntegerField()
@@ -72,8 +79,9 @@ class GameSerializer(BaseSerializer):
     teams = TeamSerializer(many=True)
     banned_champions = BannedChampionSerializer(many=True)
     game_participants = ParticipantSerializer(many=True)
+    post_game = PostGameSerializer(read_only=True)
 
     class Meta:
         model = Game
         fields = '__all__'
-        read_only_fields = ('created_at',)
+        read_only_fields = ('created_at', 'post_game')

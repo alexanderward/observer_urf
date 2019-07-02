@@ -6,14 +6,14 @@ import { of } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class LatestGameService extends HTTPBase {
+export class PostgameService extends HTTPBase {
 
   constructor(@Inject(HttpClient) http: HttpClient) {
-    super(http, 'games/latest');
+    super(http, 'games');
   }
 
-  public fetch(queryStrings: object = {}) {
-    return this.get(null, queryStrings);
+  public fetch(id: number, queryStrings: object = {}) {
+    return this.get(`${id}/postgame`, queryStrings);
   }
 
 }

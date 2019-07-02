@@ -1,3 +1,5 @@
+import json
+
 import requests
 import pprint
 from spectator.utils.constants import api_endpoint
@@ -28,6 +30,15 @@ def send_pregame_stats(stats):
         "banned_champions": stats.get("banned_champions"),
         "game_participants": players
     }
+    # pprint.pprint(data)
     resp = requests.post(url="{}/api/games/".format(api_endpoint), json=data)
     if resp.status_code != 201:
         notify_me("Unable to create pregame stats")
+
+
+def send_postgame_stats(stats):
+    resp = requests.post(url="{}/api/games/{}/postgame/".format(api_endpoint, stats.get("gameId")),
+                         json={"data": json.dumps(stats)})
+    print(resp.json())
+    if resp.status_code != 200:
+        notify_me("Unable to create postagme stats")

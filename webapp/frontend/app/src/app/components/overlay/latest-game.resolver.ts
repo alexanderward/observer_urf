@@ -10,6 +10,6 @@ export class LatestGameResolver implements Resolve<any> {
     constructor(private latestGameService: LatestGameService, private http: HttpClient) { }
 
     resolve(route: ActivatedRouteSnapshot) {
-        return this.latestGameService.list();
+        return this.latestGameService.fetch();
     }
 }

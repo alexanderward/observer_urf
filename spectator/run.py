@@ -12,7 +12,7 @@ from riotwatcher import RiotWatcher
 from spectator.utils.enums import Region, MatchTypes, Leagues
 from spectator.utils.misc_functions import get_random_item, sort_list
 from spectator.utils.interval import RepeatedTimer
-from spectator.utils.rest_api import send_pregame_stats
+from spectator.utils.rest_api import send_pregame_stats, send_postgame_stats
 
 
 class Game(object):
@@ -69,15 +69,14 @@ class Game(object):
             subprocess.Popen("TASKKILL /F /PID {pid} /T".format(pid=self.proc.pid))
         return error
 
-    def send_postgame_stats(self):
-        stats = None
+    def send_postgame_stats(self, stats=None):
         while not stats:
             try:
                 stats = self.api.match.by_id(self.game.get('platformId'), self.game.get('gameId'))
             except Exception as e:
                 print("Stats not ready yet.  Waiting 5 seconds. Error: {}".format(str(e)))
                 time.sleep(5)
-        pprint.pprint(stats)
+        send_postgame_stats(stats)
 
     def send_pregame_stats(self):
         # Can use these details as a bot command since participants not in rendered order
@@ -116,7 +115,7 @@ class Game(object):
                  "game_id": self.game.get("gameId"),
                  "banned_champions": [{"champion": self.champions[str(item['championId'])]['name']
                  if item['championId']
-                                                                                                      > 0 else "Skipped",
+                    > 0 else "Skipped",
                                        "order": item['pickTurn'], "team_id": item['teamId']}
                                       for item in self.game.get('bannedChampions', [])],
                  "game_type": self.game.get("gameQueueConfigId"),
@@ -181,7 +180,7 @@ class LeagueAPI(object):
 
 
 def run(debug=False):
-    api = LeagueAPI("RGAPI-2d8ab77e-af75-4e42-9bcf-32ca8a3d575f")
+    api = LeagueAPI("RGAPI-c1fc6855-8e6d-40e9-92c8-2311f650f58b")
 
     if not debug:
         while True:
@@ -196,8 +195,10 @@ def run(debug=False):
     else:
         with open("notes/game.json", 'r') as f:
             game = Game(json.load(f), api.api)  # use this to get the currentAccountID & get playerHistory
-        game.send_pregame_stats()
-        # game.get_stats()
+        # game.send_pregame_stats()
+
+        with open("notes/match_stats.json", 'r') as f:
+            game.send_postgame_stats(json.load(f))
 
 
 if __name__ == "__main__":

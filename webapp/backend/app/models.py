@@ -55,8 +55,14 @@ class BannedChampions(BaseModel):
     team = models.ForeignKey("Team", on_delete=models.CASCADE)
 
 
+class PostgameStats(BaseModel):
+    data = models.TextField()
+    complete = models.BooleanField(default=False)
+
+
 class Game(BaseModel):
     id = models.IntegerField(primary_key=True, editable=False)  # gameId
     game_type = models.IntegerField()  # gameQueueConfigId
     region = models.CharField(max_length=10)  # platformId
     league = models.CharField(max_length=25)
+    post_game = models.ForeignKey("PostgameStats", on_delete=models.CASCADE, related_name="game")

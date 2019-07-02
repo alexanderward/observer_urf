@@ -4,7 +4,7 @@ from rest_framework.decorators import action
 from rest_framework.viewsets import GenericViewSet
 
 from app.models import Game
-from app.serializers import GameSerializer
+from app.serializers import GameSerializer, PostGameSerializer
 
 
 class GameViewSet(mixins.CreateModelMixin,
@@ -37,4 +37,21 @@ class GameViewSet(mixins.CreateModelMixin,
         serializer = self.get_serializer_class()
         data = serializer(self.queryset.order_by('-created_at').first()).data
         return JsonResponse(data)
+
+    @action(detail=True, methods=['POST'], url_path='postgame')
+    def postgame_stats_create(self, request, *args, **kwargs):
+        PostGameSerializer(data=request.data).is_valid(raise_exception=True)
+
+        game = self.get_object()
+        game.post_game.data = request.data['data']
+        game.post_game.complete = True
+
+        game.post_game.save()
+        serializer = self.get_serializer_class()
+        return JsonResponse(serializer(game).data)
+
+    @postgame_stats_create.mapping.get
+    def postgame_stats_fetch(self, request, *args, **kwargs):
+        game = self.get_object()
+        return JsonResponse(PostGameSerializer(game.post_game).data)
 

@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:400,700);
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css);
-
+@import "~@angular/material/prebuilt-themes/purple-green.css";
 html, body {margin:0;padding:0;height:100%;overflow: hidden;}
 
 /*/ start count stats /*/
@@ -109,7 +109,6 @@ section#counter-stats {
     opacity: .8;
     font-weight: 400;
     font-size: .875rem;
-    border-radius: 0 8px 8px 0;
     text-align: center;
     display: inline-block !important;
 }
@@ -128,3 +127,21 @@ section#counter-stats {
     margin-right: auto;
     width: 50%;
   }
+
+
+
+
+.item {
+  padding: 0;
+  width: 100vw;
+  height: 100%;
+  /* background-color: crimson; */
+  color: #fff;
+  font-size: 50px;
+  line-height: 300px;
+  text-align: center;
+}
+
+.carousel-wrapper, .carousel-inner, .carousel-item{
+    height: 100%;
+}
