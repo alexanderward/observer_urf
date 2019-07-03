@@ -5,20 +5,19 @@ import { Game, League } from 'src/app/models/game.model';
 @Component({
   selector: 'app-league',
   template: `
-  <div id="panel-1" class="panel">
-    <div class="panel-container show">
-        <div class="panel-content">
-        <img [src]="imagePath" class="center" style="width: 45%; margin-left: 15em;">
-        <h2 class="center large-text">{{league | titlecase}}</h2>
-        <h5 class="center large-text" style="margin-top: -1em !important;">On {{region | uppercase}}</h5>
-        </div>
-    </div>
+  <div class="panel full-height container-fluid">
+  <h2 class="row align-items-center justify-content-center center large-text" style="width: 100%" >{{league | titlecase}} / {{region | uppercase}}</h2>
+  <div class="row align-items-center justify-content-center">
+      <img [src]="imagePath" style="width: 38%">
+      
+  </div>
+    
   </div>
   
   `,
   styles: [`
     .large-text{
-      font-size: 4.5em;
+      font-size: 9.5em;
       color: #edac1e;
       text-align: center;
       margin-top: 0em;

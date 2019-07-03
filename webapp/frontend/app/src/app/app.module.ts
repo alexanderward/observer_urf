@@ -19,6 +19,7 @@ import { MatButtonModule, MatCheckboxModule, MatIconModule, MatCard, MatCardModu
 import { InfoComponent } from './components/overlay/info/info.component';
 import { DdragonService } from './services/ddragon.service';
 import { PostGameResolver } from './components/postgame/ddragonresolver';
+import { TimerComponent } from './components/overlay/timer/timer.component';
 
 
 export const routes = [
@@ -41,6 +42,10 @@ export const routes = [
         component: OddsComponent,
         resolve: { game: LatestGameResolver }
       },
+      {
+        path: 'timer',
+        component: TimerComponent,
+      },
     ]
   },
   {
@@ -60,7 +65,7 @@ export const routes = [
     LeagueComponent,
     OddsComponent,
     SlideshowComponent,
-    CarouselComponent, CarouselItemDirective, CarouselItemElementDirective, InfoComponent
+    CarouselComponent, CarouselItemDirective, CarouselItemElementDirective, InfoComponent, TimerComponent
   ],
   imports: [
     BrowserModule,

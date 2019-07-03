@@ -1,0 +1,78 @@
+﻿{
+  "album" : {
+    "album_type" : "single",
+    "artists" : [ {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/2gZzTzeACSwFqkMroVxmnm"
+      },
+      "href" : "https://api.spotify.com/v1/artists/2gZzTzeACSwFqkMroVxmnm",
+      "id" : "2gZzTzeACSwFqkMroVxmnm",
+      "name" : "Darren Styles",
+      "type" : "artist",
+      "uri" : "spotify:artist:2gZzTzeACSwFqkMroVxmnm"
+    } ],
+    "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/album/7wUUQtOUbieMukZ9IOKwXR"
+    },
+    "href" : "https://api.spotify.com/v1/albums/7wUUQtOUbieMukZ9IOKwXR",
+    "id" : "7wUUQtOUbieMukZ9IOKwXR",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/f60ada61e344e430886d3f8a6d6c04d810294229",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://i.scdn.co/image/aa03c1f151f7b5bf20927ead17106358dcde66c0",
+      "width" : 300
+    }, {
+      "height" : 64,
+      "url" : "https://i.scdn.co/image/69290995edf26b903c751d24563fa9a0b764378c",
+      "width" : 64
+    } ],
+    "name" : "Never Let Me Down",
+    "release_date" : "2019-06-20",
+    "release_date_precision" : "day",
+    "total_tracks" : 2,
+    "type" : "album",
+    "uri" : "spotify:album:7wUUQtOUbieMukZ9IOKwXR"
+  },
+  "artists" : [ {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/2gZzTzeACSwFqkMroVxmnm"
+    },
+    "href" : "https://api.spotify.com/v1/artists/2gZzTzeACSwFqkMroVxmnm",
+    "id" : "2gZzTzeACSwFqkMroVxmnm",
+    "name" : "Darren Styles",
+    "type" : "artist",
+    "uri" : "spotify:artist:2gZzTzeACSwFqkMroVxmnm"
+  }, {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/0F1UBU7ZD8HOR44X5M6eMT"
+    },
+    "href" : "https://api.spotify.com/v1/artists/0F1UBU7ZD8HOR44X5M6eMT",
+    "id" : "0F1UBU7ZD8HOR44X5M6eMT",
+    "name" : "David Spekter",
+    "type" : "artist",
+    "uri" : "spotify:artist:0F1UBU7ZD8HOR44X5M6eMT"
+  } ],
+  "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+  "disc_number" : 1,
+  "duration_ms" : 190808,
+  "explicit" : true,
+  "external_ids" : {
+    "isrc" : "CA6D21900171"
+  },
+  "external_urls" : {
+    "spotify" : "https://open.spotify.com/track/6BnaBFeF53LtcXpCiOWLE5"
+  },
+  "href" : "https://api.spotify.com/v1/tracks/6BnaBFeF53LtcXpCiOWLE5",
+  "id" : "6BnaBFeF53LtcXpCiOWLE5",
+  "is_local" : false,
+  "name" : "Never Let Me Down",
+  "popularity" : 44,
+  "preview_url" : "https://p.scdn.co/mp3-preview/3e14ee1f8b72b4627eebca46b0c319e8204faea7?cid=55fa4e0de6184a4abd1a8cf0de5f5b1d",
+  "track_number" : 1,
+  "type" : "track",
+  "uri" : "spotify:track:6BnaBFeF53LtcXpCiOWLE5"
+}

@@ -1,0 +1,78 @@
+﻿{
+  "album" : {
+    "album_type" : "single",
+    "artists" : [ {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/3DajvNySJjylWpCSeXefFm"
+      },
+      "href" : "https://api.spotify.com/v1/artists/3DajvNySJjylWpCSeXefFm",
+      "id" : "3DajvNySJjylWpCSeXefFm",
+      "name" : "Pixel Terror",
+      "type" : "artist",
+      "uri" : "spotify:artist:3DajvNySJjylWpCSeXefFm"
+    } ],
+    "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/album/06CzTb2I0yWqFGsvlil02y"
+    },
+    "href" : "https://api.spotify.com/v1/albums/06CzTb2I0yWqFGsvlil02y",
+    "id" : "06CzTb2I0yWqFGsvlil02y",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/33d0d3533d0b4e968a5e347038098ca3d4441289",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://i.scdn.co/image/b491fb82f965cf77b868f3f242068a31f37c931e",
+      "width" : 300
+    }, {
+      "height" : 64,
+      "url" : "https://i.scdn.co/image/ac92df10cd7fcf18e9180bcb68733251b5ddb1f8",
+      "width" : 64
+    } ],
+    "name" : "Soda",
+    "release_date" : "2019-06-13",
+    "release_date_precision" : "day",
+    "total_tracks" : 1,
+    "type" : "album",
+    "uri" : "spotify:album:06CzTb2I0yWqFGsvlil02y"
+  },
+  "artists" : [ {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/3DajvNySJjylWpCSeXefFm"
+    },
+    "href" : "https://api.spotify.com/v1/artists/3DajvNySJjylWpCSeXefFm",
+    "id" : "3DajvNySJjylWpCSeXefFm",
+    "name" : "Pixel Terror",
+    "type" : "artist",
+    "uri" : "spotify:artist:3DajvNySJjylWpCSeXefFm"
+  }, {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/1MTxLbK3FFWs8s3YyYgJb0"
+    },
+    "href" : "https://api.spotify.com/v1/artists/1MTxLbK3FFWs8s3YyYgJb0",
+    "id" : "1MTxLbK3FFWs8s3YyYgJb0",
+    "name" : "itsreallyelijah",
+    "type" : "artist",
+    "uri" : "spotify:artist:1MTxLbK3FFWs8s3YyYgJb0"
+  } ],
+  "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+  "disc_number" : 1,
+  "duration_ms" : 209321,
+  "explicit" : false,
+  "external_ids" : {
+    "isrc" : "CA6D21900163"
+  },
+  "external_urls" : {
+    "spotify" : "https://open.spotify.com/track/4AbMoLRK31Fj1Gj8J00kDs"
+  },
+  "href" : "https://api.spotify.com/v1/tracks/4AbMoLRK31Fj1Gj8J00kDs",
+  "id" : "4AbMoLRK31Fj1Gj8J00kDs",
+  "is_local" : false,
+  "name" : "Soda",
+  "popularity" : 42,
+  "preview_url" : "https://p.scdn.co/mp3-preview/9f69c16041c0b10f59f14fdee96ed9c4fcc9499f?cid=55fa4e0de6184a4abd1a8cf0de5f5b1d",
+  "track_number" : 1,
+  "type" : "track",
+  "uri" : "spotify:track:4AbMoLRK31Fj1Gj8J00kDs"
+}

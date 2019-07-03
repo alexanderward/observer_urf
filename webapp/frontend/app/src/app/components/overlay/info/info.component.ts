@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
     <div class="panel-container show">
         <div class="panel-content">
         <i class="fa fa-twitch fa-5x" style="color: #6441a4"></i>  <span class="info-item">https://www.twitch.tv/observerurf</span><br>
-        <i class="fa fa-keyboard-o fa-5x"></i>  <span class="info-item">!commands</span><br>
-        <i class="fa fa-keyboard-o fa-5x"></i>  <span class="info-item">!blue &lt;amount&gt; / !red &lt;amount&gt; </span><br>
+        <i class="fa fa-keyboard-o fa-5x"></i>  <span class="info-item">New here? !commands</span><br>
+        <i class="fa fa-keyboard-o fa-5x"></i>  <span class="info-item">Vote on a team: !blue or !red </span><br>
         </div>
     </div>
   </div>

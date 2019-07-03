@@ -1,0 +1,69 @@
+﻿{
+  "album" : {
+    "album_type" : "single",
+    "artists" : [ {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/3zuevuwyBq4MiQzPB3nvW2"
+      },
+      "href" : "https://api.spotify.com/v1/artists/3zuevuwyBq4MiQzPB3nvW2",
+      "id" : "3zuevuwyBq4MiQzPB3nvW2",
+      "name" : "Rogue",
+      "type" : "artist",
+      "uri" : "spotify:artist:3zuevuwyBq4MiQzPB3nvW2"
+    } ],
+    "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/album/4Lb2JtUYcZRQdX8eDjXjxX"
+    },
+    "href" : "https://api.spotify.com/v1/albums/4Lb2JtUYcZRQdX8eDjXjxX",
+    "id" : "4Lb2JtUYcZRQdX8eDjXjxX",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/959fec18771e915083b4ad742f29eae2c5a83914",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://i.scdn.co/image/782c1e234498a770b5a8f68bbbbfc3af173d583c",
+      "width" : 300
+    }, {
+      "height" : 64,
+      "url" : "https://i.scdn.co/image/ba76558abb6532bfe9d009c68b256bf6f1246fa0",
+      "width" : 64
+    } ],
+    "name" : "Let's Talk",
+    "release_date" : "2019-06-25",
+    "release_date_precision" : "day",
+    "total_tracks" : 1,
+    "type" : "album",
+    "uri" : "spotify:album:4Lb2JtUYcZRQdX8eDjXjxX"
+  },
+  "artists" : [ {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/3zuevuwyBq4MiQzPB3nvW2"
+    },
+    "href" : "https://api.spotify.com/v1/artists/3zuevuwyBq4MiQzPB3nvW2",
+    "id" : "3zuevuwyBq4MiQzPB3nvW2",
+    "name" : "Rogue",
+    "type" : "artist",
+    "uri" : "spotify:artist:3zuevuwyBq4MiQzPB3nvW2"
+  } ],
+  "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+  "disc_number" : 1,
+  "duration_ms" : 230608,
+  "explicit" : false,
+  "external_ids" : {
+    "isrc" : "CA6D21900147"
+  },
+  "external_urls" : {
+    "spotify" : "https://open.spotify.com/track/6n4K23HLzKb1SXxfhyFEks"
+  },
+  "href" : "https://api.spotify.com/v1/tracks/6n4K23HLzKb1SXxfhyFEks",
+  "id" : "6n4K23HLzKb1SXxfhyFEks",
+  "is_local" : false,
+  "name" : "Let's Talk",
+  "popularity" : 41,
+  "preview_url" : "https://p.scdn.co/mp3-preview/fad8b75c4313eb36565ef3b1540779914245975e?cid=55fa4e0de6184a4abd1a8cf0de5f5b1d",
+  "track_number" : 1,
+  "type" : "track",
+  "uri" : "spotify:track:6n4K23HLzKb1SXxfhyFEks"
+}

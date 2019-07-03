@@ -1,0 +1,69 @@
+﻿{
+  "album" : {
+    "album_type" : "single",
+    "artists" : [ {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/41rVuRHYAiH7ltBTHVR9We"
+      },
+      "href" : "https://api.spotify.com/v1/artists/41rVuRHYAiH7ltBTHVR9We",
+      "id" : "41rVuRHYAiH7ltBTHVR9We",
+      "name" : "Slushii",
+      "type" : "artist",
+      "uri" : "spotify:artist:41rVuRHYAiH7ltBTHVR9We"
+    } ],
+    "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/album/5jvfnbbTX5bvw5QqRaA8nR"
+    },
+    "href" : "https://api.spotify.com/v1/albums/5jvfnbbTX5bvw5QqRaA8nR",
+    "id" : "5jvfnbbTX5bvw5QqRaA8nR",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/d25d9f5b7f6422f7fc8a7295f332e2233f2e954f",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://i.scdn.co/image/c8dac22f9d949c7670c0b15a16fe7b50390f0710",
+      "width" : 300
+    }, {
+      "height" : 64,
+      "url" : "https://i.scdn.co/image/796aa335a49aab5c64f36bce77a00e6391fa9b7a",
+      "width" : 64
+    } ],
+    "name" : "Far Away",
+    "release_date" : "2019-06-28",
+    "release_date_precision" : "day",
+    "total_tracks" : 1,
+    "type" : "album",
+    "uri" : "spotify:album:5jvfnbbTX5bvw5QqRaA8nR"
+  },
+  "artists" : [ {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/41rVuRHYAiH7ltBTHVR9We"
+    },
+    "href" : "https://api.spotify.com/v1/artists/41rVuRHYAiH7ltBTHVR9We",
+    "id" : "41rVuRHYAiH7ltBTHVR9We",
+    "name" : "Slushii",
+    "type" : "artist",
+    "uri" : "spotify:artist:41rVuRHYAiH7ltBTHVR9We"
+  } ],
+  "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+  "disc_number" : 1,
+  "duration_ms" : 208000,
+  "explicit" : false,
+  "external_ids" : {
+    "isrc" : "CA6D21900175"
+  },
+  "external_urls" : {
+    "spotify" : "https://open.spotify.com/track/6XMOFJSLapzU6KtBdRsH1J"
+  },
+  "href" : "https://api.spotify.com/v1/tracks/6XMOFJSLapzU6KtBdRsH1J",
+  "id" : "6XMOFJSLapzU6KtBdRsH1J",
+  "is_local" : false,
+  "name" : "Far Away",
+  "popularity" : 52,
+  "preview_url" : "https://p.scdn.co/mp3-preview/550b1d9b4784d68589fc2f55c52dab9eb80162a4?cid=55fa4e0de6184a4abd1a8cf0de5f5b1d",
+  "track_number" : 1,
+  "type" : "track",
+  "uri" : "spotify:track:6XMOFJSLapzU6KtBdRsH1J"
+}

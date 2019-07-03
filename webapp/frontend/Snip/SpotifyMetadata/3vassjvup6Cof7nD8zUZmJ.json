@@ -1,0 +1,87 @@
+﻿{
+  "album" : {
+    "album_type" : "single",
+    "artists" : [ {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/09GJU4jF4zhNfN72mTyMCi"
+      },
+      "href" : "https://api.spotify.com/v1/artists/09GJU4jF4zhNfN72mTyMCi",
+      "id" : "09GJU4jF4zhNfN72mTyMCi",
+      "name" : "Nonsens",
+      "type" : "artist",
+      "uri" : "spotify:artist:09GJU4jF4zhNfN72mTyMCi"
+    }, {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/1L4HGLMFRrJsAnug5M7slL"
+      },
+      "href" : "https://api.spotify.com/v1/artists/1L4HGLMFRrJsAnug5M7slL",
+      "id" : "1L4HGLMFRrJsAnug5M7slL",
+      "name" : "Ericka Jane",
+      "type" : "artist",
+      "uri" : "spotify:artist:1L4HGLMFRrJsAnug5M7slL"
+    } ],
+    "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/album/08rXhzs3CcDxVFzyFpfVtt"
+    },
+    "href" : "https://api.spotify.com/v1/albums/08rXhzs3CcDxVFzyFpfVtt",
+    "id" : "08rXhzs3CcDxVFzyFpfVtt",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/25a5ffdfff53662264687e1338e962763d6958a3",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://i.scdn.co/image/03d88f541a8171bafd466207df721fb2815b3af8",
+      "width" : 300
+    }, {
+      "height" : 64,
+      "url" : "https://i.scdn.co/image/a9929f6aa00b005bd7121b5f4ee006e3a347d2d3",
+      "width" : 64
+    } ],
+    "name" : "We All",
+    "release_date" : "2019-05-24",
+    "release_date_precision" : "day",
+    "total_tracks" : 1,
+    "type" : "album",
+    "uri" : "spotify:album:08rXhzs3CcDxVFzyFpfVtt"
+  },
+  "artists" : [ {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/09GJU4jF4zhNfN72mTyMCi"
+    },
+    "href" : "https://api.spotify.com/v1/artists/09GJU4jF4zhNfN72mTyMCi",
+    "id" : "09GJU4jF4zhNfN72mTyMCi",
+    "name" : "Nonsens",
+    "type" : "artist",
+    "uri" : "spotify:artist:09GJU4jF4zhNfN72mTyMCi"
+  }, {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/1L4HGLMFRrJsAnug5M7slL"
+    },
+    "href" : "https://api.spotify.com/v1/artists/1L4HGLMFRrJsAnug5M7slL",
+    "id" : "1L4HGLMFRrJsAnug5M7slL",
+    "name" : "Ericka Jane",
+    "type" : "artist",
+    "uri" : "spotify:artist:1L4HGLMFRrJsAnug5M7slL"
+  } ],
+  "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+  "disc_number" : 1,
+  "duration_ms" : 191632,
+  "explicit" : false,
+  "external_ids" : {
+    "isrc" : "CA6D21900091"
+  },
+  "external_urls" : {
+    "spotify" : "https://open.spotify.com/track/3vassjvup6Cof7nD8zUZmJ"
+  },
+  "href" : "https://api.spotify.com/v1/tracks/3vassjvup6Cof7nD8zUZmJ",
+  "id" : "3vassjvup6Cof7nD8zUZmJ",
+  "is_local" : false,
+  "name" : "We All",
+  "popularity" : 47,
+  "preview_url" : "https://p.scdn.co/mp3-preview/c3eec4f89d556af609b56da3dbea840e4fbaaf8a?cid=55fa4e0de6184a4abd1a8cf0de5f5b1d",
+  "track_number" : 1,
+  "type" : "track",
+  "uri" : "spotify:track:3vassjvup6Cof7nD8zUZmJ"
+}

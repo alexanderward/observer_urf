@@ -1,0 +1,69 @@
+﻿{
+  "album" : {
+    "album_type" : "single",
+    "artists" : [ {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/1BAdSa5cdtCNLbvT7gWmtJ"
+      },
+      "href" : "https://api.spotify.com/v1/artists/1BAdSa5cdtCNLbvT7gWmtJ",
+      "id" : "1BAdSa5cdtCNLbvT7gWmtJ",
+      "name" : "Conro",
+      "type" : "artist",
+      "uri" : "spotify:artist:1BAdSa5cdtCNLbvT7gWmtJ"
+    } ],
+    "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/album/52O1svkiHt9R6pdsaYoTLP"
+    },
+    "href" : "https://api.spotify.com/v1/albums/52O1svkiHt9R6pdsaYoTLP",
+    "id" : "52O1svkiHt9R6pdsaYoTLP",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/5cb8a7b976c733e1cefb3e2f9a4a82b464dad310",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://i.scdn.co/image/8f3f86512dadd3b1b244a53baa1ac7e6698397f1",
+      "width" : 300
+    }, {
+      "height" : 64,
+      "url" : "https://i.scdn.co/image/0e00d4288770124bf0193febf139efcaa6bd7e22",
+      "width" : 64
+    } ],
+    "name" : "All I Want",
+    "release_date" : "2019-06-14",
+    "release_date_precision" : "day",
+    "total_tracks" : 1,
+    "type" : "album",
+    "uri" : "spotify:album:52O1svkiHt9R6pdsaYoTLP"
+  },
+  "artists" : [ {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/1BAdSa5cdtCNLbvT7gWmtJ"
+    },
+    "href" : "https://api.spotify.com/v1/artists/1BAdSa5cdtCNLbvT7gWmtJ",
+    "id" : "1BAdSa5cdtCNLbvT7gWmtJ",
+    "name" : "Conro",
+    "type" : "artist",
+    "uri" : "spotify:artist:1BAdSa5cdtCNLbvT7gWmtJ"
+  } ],
+  "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+  "disc_number" : 1,
+  "duration_ms" : 217358,
+  "explicit" : false,
+  "external_ids" : {
+    "isrc" : "CA6D21900114"
+  },
+  "external_urls" : {
+    "spotify" : "https://open.spotify.com/track/47Ee2r9mvcob1Yep5MQlCu"
+  },
+  "href" : "https://api.spotify.com/v1/tracks/47Ee2r9mvcob1Yep5MQlCu",
+  "id" : "47Ee2r9mvcob1Yep5MQlCu",
+  "is_local" : false,
+  "name" : "All I Want",
+  "popularity" : 48,
+  "preview_url" : "https://p.scdn.co/mp3-preview/721012b1f3eec0ee35c23d33a7af106e10e0efd6?cid=55fa4e0de6184a4abd1a8cf0de5f5b1d",
+  "track_number" : 1,
+  "type" : "track",
+  "uri" : "spotify:track:47Ee2r9mvcob1Yep5MQlCu"
+}

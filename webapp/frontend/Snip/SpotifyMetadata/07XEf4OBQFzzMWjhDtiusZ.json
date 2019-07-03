@@ -1,0 +1,78 @@
+﻿{
+  "album" : {
+    "album_type" : "single",
+    "artists" : [ {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/3AMFQZ3Tt549kShRG2IBYT"
+      },
+      "href" : "https://api.spotify.com/v1/artists/3AMFQZ3Tt549kShRG2IBYT",
+      "id" : "3AMFQZ3Tt549kShRG2IBYT",
+      "name" : "Aiobahn",
+      "type" : "artist",
+      "uri" : "spotify:artist:3AMFQZ3Tt549kShRG2IBYT"
+    } ],
+    "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/album/5m9zJP8xYNWDOh9iRBeWO4"
+    },
+    "href" : "https://api.spotify.com/v1/albums/5m9zJP8xYNWDOh9iRBeWO4",
+    "id" : "5m9zJP8xYNWDOh9iRBeWO4",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/e9f684919b388aa3d625c6296b794665c4371154",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://i.scdn.co/image/68e15788deff1cbb2ba8a4e35e36639f344b1887",
+      "width" : 300
+    }, {
+      "height" : 64,
+      "url" : "https://i.scdn.co/image/9f8a25a2e15329f48b783b9f94fdd0e04c3c3c7b",
+      "width" : 64
+    } ],
+    "name" : "Medusa",
+    "release_date" : "2019-06-18",
+    "release_date_precision" : "day",
+    "total_tracks" : 1,
+    "type" : "album",
+    "uri" : "spotify:album:5m9zJP8xYNWDOh9iRBeWO4"
+  },
+  "artists" : [ {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/3AMFQZ3Tt549kShRG2IBYT"
+    },
+    "href" : "https://api.spotify.com/v1/artists/3AMFQZ3Tt549kShRG2IBYT",
+    "id" : "3AMFQZ3Tt549kShRG2IBYT",
+    "name" : "Aiobahn",
+    "type" : "artist",
+    "uri" : "spotify:artist:3AMFQZ3Tt549kShRG2IBYT"
+  }, {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/5wMfct6VVvaVQ8xGCXxIUa"
+    },
+    "href" : "https://api.spotify.com/v1/artists/5wMfct6VVvaVQ8xGCXxIUa",
+    "id" : "5wMfct6VVvaVQ8xGCXxIUa",
+    "name" : "Cozi Zuehlsdorff",
+    "type" : "artist",
+    "uri" : "spotify:artist:5wMfct6VVvaVQ8xGCXxIUa"
+  } ],
+  "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+  "disc_number" : 1,
+  "duration_ms" : 175238,
+  "explicit" : false,
+  "external_ids" : {
+    "isrc" : "CA6D21900204"
+  },
+  "external_urls" : {
+    "spotify" : "https://open.spotify.com/track/07XEf4OBQFzzMWjhDtiusZ"
+  },
+  "href" : "https://api.spotify.com/v1/tracks/07XEf4OBQFzzMWjhDtiusZ",
+  "id" : "07XEf4OBQFzzMWjhDtiusZ",
+  "is_local" : false,
+  "name" : "Medusa",
+  "popularity" : 44,
+  "preview_url" : "https://p.scdn.co/mp3-preview/e6e9d6f38494444294e9b315e331070ff155c99a?cid=55fa4e0de6184a4abd1a8cf0de5f5b1d",
+  "track_number" : 1,
+  "type" : "track",
+  "uri" : "spotify:track:07XEf4OBQFzzMWjhDtiusZ"
+}

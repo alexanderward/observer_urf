@@ -1,0 +1,87 @@
+﻿{
+  "album" : {
+    "album_type" : "single",
+    "artists" : [ {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/7xYcJfhrRx9Iv8smhoEibc"
+      },
+      "href" : "https://api.spotify.com/v1/artists/7xYcJfhrRx9Iv8smhoEibc",
+      "id" : "7xYcJfhrRx9Iv8smhoEibc",
+      "name" : "Ephixa",
+      "type" : "artist",
+      "uri" : "spotify:artist:7xYcJfhrRx9Iv8smhoEibc"
+    }, {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/0rSrqbsuGkhgPrg7jqk7Kk"
+      },
+      "href" : "https://api.spotify.com/v1/artists/0rSrqbsuGkhgPrg7jqk7Kk",
+      "id" : "0rSrqbsuGkhgPrg7jqk7Kk",
+      "name" : "Heartful",
+      "type" : "artist",
+      "uri" : "spotify:artist:0rSrqbsuGkhgPrg7jqk7Kk"
+    } ],
+    "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/album/3i79o60w7LVAfonuiZPzaH"
+    },
+    "href" : "https://api.spotify.com/v1/albums/3i79o60w7LVAfonuiZPzaH",
+    "id" : "3i79o60w7LVAfonuiZPzaH",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/115ea0e1aa28e68e2a546268f12bf15cca7771e8",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://i.scdn.co/image/1dbe842f51f6bf30ac82efc13949986f26c4eae4",
+      "width" : 300
+    }, {
+      "height" : 64,
+      "url" : "https://i.scdn.co/image/f3fe8069285e3e14ef0f28e70702d649454a507c",
+      "width" : 64
+    } ],
+    "name" : "Sundance",
+    "release_date" : "2019-06-11",
+    "release_date_precision" : "day",
+    "total_tracks" : 1,
+    "type" : "album",
+    "uri" : "spotify:album:3i79o60w7LVAfonuiZPzaH"
+  },
+  "artists" : [ {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/7xYcJfhrRx9Iv8smhoEibc"
+    },
+    "href" : "https://api.spotify.com/v1/artists/7xYcJfhrRx9Iv8smhoEibc",
+    "id" : "7xYcJfhrRx9Iv8smhoEibc",
+    "name" : "Ephixa",
+    "type" : "artist",
+    "uri" : "spotify:artist:7xYcJfhrRx9Iv8smhoEibc"
+  }, {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/0rSrqbsuGkhgPrg7jqk7Kk"
+    },
+    "href" : "https://api.spotify.com/v1/artists/0rSrqbsuGkhgPrg7jqk7Kk",
+    "id" : "0rSrqbsuGkhgPrg7jqk7Kk",
+    "name" : "Heartful",
+    "type" : "artist",
+    "uri" : "spotify:artist:0rSrqbsuGkhgPrg7jqk7Kk"
+  } ],
+  "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+  "disc_number" : 1,
+  "duration_ms" : 193593,
+  "explicit" : false,
+  "external_ids" : {
+    "isrc" : "CA6D21900151"
+  },
+  "external_urls" : {
+    "spotify" : "https://open.spotify.com/track/7FO2nKenGD27Eo95h2Eks9"
+  },
+  "href" : "https://api.spotify.com/v1/tracks/7FO2nKenGD27Eo95h2Eks9",
+  "id" : "7FO2nKenGD27Eo95h2Eks9",
+  "is_local" : false,
+  "name" : "Sundance",
+  "popularity" : 44,
+  "preview_url" : "https://p.scdn.co/mp3-preview/6676d743e9e6c90683b9653d73f3f7b78fea02a7?cid=55fa4e0de6184a4abd1a8cf0de5f5b1d",
+  "track_number" : 1,
+  "type" : "track",
+  "uri" : "spotify:track:7FO2nKenGD27Eo95h2Eks9"
+}

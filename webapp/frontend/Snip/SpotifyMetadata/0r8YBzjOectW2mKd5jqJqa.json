@@ -1,0 +1,87 @@
+﻿{
+  "album" : {
+    "album_type" : "single",
+    "artists" : [ {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/49vNfTzZU1nXv2xO34z5RY"
+      },
+      "href" : "https://api.spotify.com/v1/artists/49vNfTzZU1nXv2xO34z5RY",
+      "id" : "49vNfTzZU1nXv2xO34z5RY",
+      "name" : "CloudNone",
+      "type" : "artist",
+      "uri" : "spotify:artist:49vNfTzZU1nXv2xO34z5RY"
+    }, {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/5eOyDcFvvdc7D7BD6gCdsi"
+      },
+      "href" : "https://api.spotify.com/v1/artists/5eOyDcFvvdc7D7BD6gCdsi",
+      "id" : "5eOyDcFvvdc7D7BD6gCdsi",
+      "name" : "Direct",
+      "type" : "artist",
+      "uri" : "spotify:artist:5eOyDcFvvdc7D7BD6gCdsi"
+    } ],
+    "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/album/6NZHntF19mB4QuOC2cNJbf"
+    },
+    "href" : "https://api.spotify.com/v1/albums/6NZHntF19mB4QuOC2cNJbf",
+    "id" : "6NZHntF19mB4QuOC2cNJbf",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/b9d59b4850cbc8bb110e4462deeefdbe2ff4d376",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://i.scdn.co/image/570cbfe84be2ded5d65459e8716d3307fccb1c98",
+      "width" : 300
+    }, {
+      "height" : 64,
+      "url" : "https://i.scdn.co/image/2d97e79e960635b743fb49f7cc466fcb93fa5043",
+      "width" : 64
+    } ],
+    "name" : "Lost and Found",
+    "release_date" : "2019-06-07",
+    "release_date_precision" : "day",
+    "total_tracks" : 3,
+    "type" : "album",
+    "uri" : "spotify:album:6NZHntF19mB4QuOC2cNJbf"
+  },
+  "artists" : [ {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/49vNfTzZU1nXv2xO34z5RY"
+    },
+    "href" : "https://api.spotify.com/v1/artists/49vNfTzZU1nXv2xO34z5RY",
+    "id" : "49vNfTzZU1nXv2xO34z5RY",
+    "name" : "CloudNone",
+    "type" : "artist",
+    "uri" : "spotify:artist:49vNfTzZU1nXv2xO34z5RY"
+  }, {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/5eOyDcFvvdc7D7BD6gCdsi"
+    },
+    "href" : "https://api.spotify.com/v1/artists/5eOyDcFvvdc7D7BD6gCdsi",
+    "id" : "5eOyDcFvvdc7D7BD6gCdsi",
+    "name" : "Direct",
+    "type" : "artist",
+    "uri" : "spotify:artist:5eOyDcFvvdc7D7BD6gCdsi"
+  } ],
+  "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+  "disc_number" : 1,
+  "duration_ms" : 197680,
+  "explicit" : false,
+  "external_ids" : {
+    "isrc" : "CA6D21900136"
+  },
+  "external_urls" : {
+    "spotify" : "https://open.spotify.com/track/0r8YBzjOectW2mKd5jqJqa"
+  },
+  "href" : "https://api.spotify.com/v1/tracks/0r8YBzjOectW2mKd5jqJqa",
+  "id" : "0r8YBzjOectW2mKd5jqJqa",
+  "is_local" : false,
+  "name" : "Without U",
+  "popularity" : 36,
+  "preview_url" : "https://p.scdn.co/mp3-preview/c87799737c234a9217c932c390b887609a7d2f85?cid=55fa4e0de6184a4abd1a8cf0de5f5b1d",
+  "track_number" : 2,
+  "type" : "track",
+  "uri" : "spotify:track:0r8YBzjOectW2mKd5jqJqa"
+}

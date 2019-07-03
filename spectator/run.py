@@ -95,7 +95,7 @@ class Game(object):
             champion = self.champions[str(participant['championId'])]
             player = dict(league=player_stats["tier"],
                           summoner=summoner['name'], win_rate=win_rate,
-                          champion=champion['name'],
+                          champion=champion['id'],
                           hot_streak=player_stats["hotStreak"])
             teams[participant.get('teamId')]['players'].append(player)
             if teams[participant.get('teamId')]['win_rate'] is None:
@@ -178,7 +178,7 @@ class LeagueAPI(object):
 
 
 def run(debug=False):
-    api = LeagueAPI("RGAPI-c1fc6855-8e6d-40e9-92c8-2311f650f58b")
+    api = LeagueAPI("RGAPI-cd7a25ab-3f5e-4971-9b02-552185b4ecd8")
 
     if not debug:
         while True:
@@ -188,8 +188,8 @@ def run(debug=False):
             if not error:
                 game.send_postgame_stats()
             # break
-            # print("Waiting a minute")
-            # time.sleep(60)
+            print("Waiting ~2 minutes")
+            time.sleep(126)
     else:
         with open("notes/game.json", 'r') as f:
             game = Game(json.load(f), api.api)  # use this to get the currentAccountID & get playerHistory

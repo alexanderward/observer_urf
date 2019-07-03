@@ -1,0 +1,87 @@
+﻿{
+  "album" : {
+    "album_type" : "single",
+    "artists" : [ {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/6RQ9kYbHisp1UUbnfwHNeU"
+      },
+      "href" : "https://api.spotify.com/v1/artists/6RQ9kYbHisp1UUbnfwHNeU",
+      "id" : "6RQ9kYbHisp1UUbnfwHNeU",
+      "name" : "Feint",
+      "type" : "artist",
+      "uri" : "spotify:artist:6RQ9kYbHisp1UUbnfwHNeU"
+    }, {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/7ddnIV2r4SLjuwyGlgLIWt"
+      },
+      "href" : "https://api.spotify.com/v1/artists/7ddnIV2r4SLjuwyGlgLIWt",
+      "id" : "7ddnIV2r4SLjuwyGlgLIWt",
+      "name" : "Laura Brehm",
+      "type" : "artist",
+      "uri" : "spotify:artist:7ddnIV2r4SLjuwyGlgLIWt"
+    } ],
+    "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/album/57v13jkr7KWKM6ILkoCYhk"
+    },
+    "href" : "https://api.spotify.com/v1/albums/57v13jkr7KWKM6ILkoCYhk",
+    "id" : "57v13jkr7KWKM6ILkoCYhk",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/781593703e92d27ae6ff13f6d069077d07a619ea",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://i.scdn.co/image/1d9c815d2e78fae72c522e89cf42779ec2bbec9d",
+      "width" : 300
+    }, {
+      "height" : 64,
+      "url" : "https://i.scdn.co/image/cd68e923e326e8bc84182dc678057f940e02766c",
+      "width" : 64
+    } ],
+    "name" : "Solace",
+    "release_date" : "2019-06-17",
+    "release_date_precision" : "day",
+    "total_tracks" : 1,
+    "type" : "album",
+    "uri" : "spotify:album:57v13jkr7KWKM6ILkoCYhk"
+  },
+  "artists" : [ {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/6RQ9kYbHisp1UUbnfwHNeU"
+    },
+    "href" : "https://api.spotify.com/v1/artists/6RQ9kYbHisp1UUbnfwHNeU",
+    "id" : "6RQ9kYbHisp1UUbnfwHNeU",
+    "name" : "Feint",
+    "type" : "artist",
+    "uri" : "spotify:artist:6RQ9kYbHisp1UUbnfwHNeU"
+  }, {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/7ddnIV2r4SLjuwyGlgLIWt"
+    },
+    "href" : "https://api.spotify.com/v1/artists/7ddnIV2r4SLjuwyGlgLIWt",
+    "id" : "7ddnIV2r4SLjuwyGlgLIWt",
+    "name" : "Laura Brehm",
+    "type" : "artist",
+    "uri" : "spotify:artist:7ddnIV2r4SLjuwyGlgLIWt"
+  } ],
+  "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+  "disc_number" : 1,
+  "duration_ms" : 268965,
+  "explicit" : false,
+  "external_ids" : {
+    "isrc" : "CA6D21900167"
+  },
+  "external_urls" : {
+    "spotify" : "https://open.spotify.com/track/5FBqdMefPnp3Xjdkhn51oc"
+  },
+  "href" : "https://api.spotify.com/v1/tracks/5FBqdMefPnp3Xjdkhn51oc",
+  "id" : "5FBqdMefPnp3Xjdkhn51oc",
+  "is_local" : false,
+  "name" : "Solace",
+  "popularity" : 49,
+  "preview_url" : "https://p.scdn.co/mp3-preview/9071d7e5196afa44c6b7c70076a4319f77195d1a?cid=55fa4e0de6184a4abd1a8cf0de5f5b1d",
+  "track_number" : 1,
+  "type" : "track",
+  "uri" : "spotify:track:5FBqdMefPnp3Xjdkhn51oc"
+}

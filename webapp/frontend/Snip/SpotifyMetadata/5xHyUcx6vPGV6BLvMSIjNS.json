@@ -1,0 +1,78 @@
+﻿{
+  "album" : {
+    "album_type" : "single",
+    "artists" : [ {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/1fILrc9B34DjHxSMkJmyBN"
+      },
+      "href" : "https://api.spotify.com/v1/artists/1fILrc9B34DjHxSMkJmyBN",
+      "id" : "1fILrc9B34DjHxSMkJmyBN",
+      "name" : "Bossfight",
+      "type" : "artist",
+      "uri" : "spotify:artist:1fILrc9B34DjHxSMkJmyBN"
+    } ],
+    "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/album/4i5UENu7moA0irH9LcQr8l"
+    },
+    "href" : "https://api.spotify.com/v1/albums/4i5UENu7moA0irH9LcQr8l",
+    "id" : "4i5UENu7moA0irH9LcQr8l",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/2be7b3c8b6788bb02ebf28c0c846ad8a16d8f9ac",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://i.scdn.co/image/73fbe0131a654e1452e1aa9d7b9e2385b924612c",
+      "width" : 300
+    }, {
+      "height" : 64,
+      "url" : "https://i.scdn.co/image/4e73018a773482336812c4e72483c4a982395350",
+      "width" : 64
+    } ],
+    "name" : "Overdose",
+    "release_date" : "2019-05-27",
+    "release_date_precision" : "day",
+    "total_tracks" : 1,
+    "type" : "album",
+    "uri" : "spotify:album:4i5UENu7moA0irH9LcQr8l"
+  },
+  "artists" : [ {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/1fILrc9B34DjHxSMkJmyBN"
+    },
+    "href" : "https://api.spotify.com/v1/artists/1fILrc9B34DjHxSMkJmyBN",
+    "id" : "1fILrc9B34DjHxSMkJmyBN",
+    "name" : "Bossfight",
+    "type" : "artist",
+    "uri" : "spotify:artist:1fILrc9B34DjHxSMkJmyBN"
+  }, {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/1hII0FUxBvpT7bnuS7TQ6q"
+    },
+    "href" : "https://api.spotify.com/v1/artists/1hII0FUxBvpT7bnuS7TQ6q",
+    "id" : "1hII0FUxBvpT7bnuS7TQ6q",
+    "name" : "Philip Strand",
+    "type" : "artist",
+    "uri" : "spotify:artist:1hII0FUxBvpT7bnuS7TQ6q"
+  } ],
+  "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+  "disc_number" : 1,
+  "duration_ms" : 240000,
+  "explicit" : false,
+  "external_ids" : {
+    "isrc" : "CA6D21900161"
+  },
+  "external_urls" : {
+    "spotify" : "https://open.spotify.com/track/5xHyUcx6vPGV6BLvMSIjNS"
+  },
+  "href" : "https://api.spotify.com/v1/tracks/5xHyUcx6vPGV6BLvMSIjNS",
+  "id" : "5xHyUcx6vPGV6BLvMSIjNS",
+  "is_local" : false,
+  "name" : "Overdose",
+  "popularity" : 43,
+  "preview_url" : "https://p.scdn.co/mp3-preview/27d5afc26f5beb1d0a3835f422a493a36600e174?cid=55fa4e0de6184a4abd1a8cf0de5f5b1d",
+  "track_number" : 1,
+  "type" : "track",
+  "uri" : "spotify:track:5xHyUcx6vPGV6BLvMSIjNS"
+}

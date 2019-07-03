@@ -1,0 +1,69 @@
+﻿{
+  "album" : {
+    "album_type" : "single",
+    "artists" : [ {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/3bwENxqj9nhaAI3fsAwmv9"
+      },
+      "href" : "https://api.spotify.com/v1/artists/3bwENxqj9nhaAI3fsAwmv9",
+      "id" : "3bwENxqj9nhaAI3fsAwmv9",
+      "name" : "Tokyo Machine",
+      "type" : "artist",
+      "uri" : "spotify:artist:3bwENxqj9nhaAI3fsAwmv9"
+    } ],
+    "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/album/4XAdLHGtBBFc6AonrQsSXa"
+    },
+    "href" : "https://api.spotify.com/v1/albums/4XAdLHGtBBFc6AonrQsSXa",
+    "id" : "4XAdLHGtBBFc6AonrQsSXa",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/f6b561da0e768c7a84ecf3a0a2eab8233216ec67",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://i.scdn.co/image/7c90598d456b046224bcb1ca3f1738cfd65e3176",
+      "width" : 300
+    }, {
+      "height" : 64,
+      "url" : "https://i.scdn.co/image/f927aa0155e31962f7fa3ca0f47cadddf568fb26",
+      "width" : 64
+    } ],
+    "name" : "SAIKOU",
+    "release_date" : "2019-05-30",
+    "release_date_precision" : "day",
+    "total_tracks" : 1,
+    "type" : "album",
+    "uri" : "spotify:album:4XAdLHGtBBFc6AonrQsSXa"
+  },
+  "artists" : [ {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/3bwENxqj9nhaAI3fsAwmv9"
+    },
+    "href" : "https://api.spotify.com/v1/artists/3bwENxqj9nhaAI3fsAwmv9",
+    "id" : "3bwENxqj9nhaAI3fsAwmv9",
+    "name" : "Tokyo Machine",
+    "type" : "artist",
+    "uri" : "spotify:artist:3bwENxqj9nhaAI3fsAwmv9"
+  } ],
+  "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+  "disc_number" : 1,
+  "duration_ms" : 175312,
+  "explicit" : false,
+  "external_ids" : {
+    "isrc" : "CA6D21900162"
+  },
+  "external_urls" : {
+    "spotify" : "https://open.spotify.com/track/0wHNzLTeVSOF7iAH4C8Kv9"
+  },
+  "href" : "https://api.spotify.com/v1/tracks/0wHNzLTeVSOF7iAH4C8Kv9",
+  "id" : "0wHNzLTeVSOF7iAH4C8Kv9",
+  "is_local" : false,
+  "name" : "SAIKOU",
+  "popularity" : 48,
+  "preview_url" : "https://p.scdn.co/mp3-preview/041af68dce35d9e90a2ed07756ebe6d592ec2dc2?cid=55fa4e0de6184a4abd1a8cf0de5f5b1d",
+  "track_number" : 1,
+  "type" : "track",
+  "uri" : "spotify:track:0wHNzLTeVSOF7iAH4C8Kv9"
+}

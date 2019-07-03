@@ -1,0 +1,105 @@
+﻿{
+  "album" : {
+    "album_type" : "single",
+    "artists" : [ {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/3OKg7YbOIatODzkRIbLJR4"
+      },
+      "href" : "https://api.spotify.com/v1/artists/3OKg7YbOIatODzkRIbLJR4",
+      "id" : "3OKg7YbOIatODzkRIbLJR4",
+      "name" : "TheFatRat",
+      "type" : "artist",
+      "uri" : "spotify:artist:3OKg7YbOIatODzkRIbLJR4"
+    }, {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/0vC48gyflgfcrP6f50V9R8"
+      },
+      "href" : "https://api.spotify.com/v1/artists/0vC48gyflgfcrP6f50V9R8",
+      "id" : "0vC48gyflgfcrP6f50V9R8",
+      "name" : "Slaydit",
+      "type" : "artist",
+      "uri" : "spotify:artist:0vC48gyflgfcrP6f50V9R8"
+    }, {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/4DTbdShHu2RPYEEMUp2XWV"
+      },
+      "href" : "https://api.spotify.com/v1/artists/4DTbdShHu2RPYEEMUp2XWV",
+      "id" : "4DTbdShHu2RPYEEMUp2XWV",
+      "name" : "Anjulie",
+      "type" : "artist",
+      "uri" : "spotify:artist:4DTbdShHu2RPYEEMUp2XWV"
+    } ],
+    "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/album/1sf6fIA9xywLBVsKbYz0sJ"
+    },
+    "href" : "https://api.spotify.com/v1/albums/1sf6fIA9xywLBVsKbYz0sJ",
+    "id" : "1sf6fIA9xywLBVsKbYz0sJ",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/38ccd0e73cad26fbd1af13111db95217e490dd8c",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://i.scdn.co/image/405da0a1d256c7c5266d544224686cc2b33e4a9e",
+      "width" : 300
+    }, {
+      "height" : 64,
+      "url" : "https://i.scdn.co/image/6423a795d584b891f65034ca948cc01a8188e107",
+      "width" : 64
+    } ],
+    "name" : "Stronger",
+    "release_date" : "2019-06-24",
+    "release_date_precision" : "day",
+    "total_tracks" : 1,
+    "type" : "album",
+    "uri" : "spotify:album:1sf6fIA9xywLBVsKbYz0sJ"
+  },
+  "artists" : [ {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/3OKg7YbOIatODzkRIbLJR4"
+    },
+    "href" : "https://api.spotify.com/v1/artists/3OKg7YbOIatODzkRIbLJR4",
+    "id" : "3OKg7YbOIatODzkRIbLJR4",
+    "name" : "TheFatRat",
+    "type" : "artist",
+    "uri" : "spotify:artist:3OKg7YbOIatODzkRIbLJR4"
+  }, {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/0vC48gyflgfcrP6f50V9R8"
+    },
+    "href" : "https://api.spotify.com/v1/artists/0vC48gyflgfcrP6f50V9R8",
+    "id" : "0vC48gyflgfcrP6f50V9R8",
+    "name" : "Slaydit",
+    "type" : "artist",
+    "uri" : "spotify:artist:0vC48gyflgfcrP6f50V9R8"
+  }, {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/4DTbdShHu2RPYEEMUp2XWV"
+    },
+    "href" : "https://api.spotify.com/v1/artists/4DTbdShHu2RPYEEMUp2XWV",
+    "id" : "4DTbdShHu2RPYEEMUp2XWV",
+    "name" : "Anjulie",
+    "type" : "artist",
+    "uri" : "spotify:artist:4DTbdShHu2RPYEEMUp2XWV"
+  } ],
+  "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+  "disc_number" : 1,
+  "duration_ms" : 205500,
+  "explicit" : false,
+  "external_ids" : {
+    "isrc" : "CA6D21900181"
+  },
+  "external_urls" : {
+    "spotify" : "https://open.spotify.com/track/0iTI5FTB9iEUtcMdx9YyZS"
+  },
+  "href" : "https://api.spotify.com/v1/tracks/0iTI5FTB9iEUtcMdx9YyZS",
+  "id" : "0iTI5FTB9iEUtcMdx9YyZS",
+  "is_local" : false,
+  "name" : "Stronger",
+  "popularity" : 53,
+  "preview_url" : "https://p.scdn.co/mp3-preview/21199b899aaa130c33acbe92e0aab39c7b384794?cid=55fa4e0de6184a4abd1a8cf0de5f5b1d",
+  "track_number" : 1,
+  "type" : "track",
+  "uri" : "spotify:track:0iTI5FTB9iEUtcMdx9YyZS"
+}

@@ -1,0 +1,78 @@
+﻿{
+  "album" : {
+    "album_type" : "single",
+    "artists" : [ {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/0YVFdCm1S3ikQU0yl110lu"
+      },
+      "href" : "https://api.spotify.com/v1/artists/0YVFdCm1S3ikQU0yl110lu",
+      "id" : "0YVFdCm1S3ikQU0yl110lu",
+      "name" : "Disero",
+      "type" : "artist",
+      "uri" : "spotify:artist:0YVFdCm1S3ikQU0yl110lu"
+    } ],
+    "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/album/2UbB7skvY3ezHaD88VQ9OK"
+    },
+    "href" : "https://api.spotify.com/v1/albums/2UbB7skvY3ezHaD88VQ9OK",
+    "id" : "2UbB7skvY3ezHaD88VQ9OK",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/daace892ea007b0b2241975854868d278b4c7c24",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://i.scdn.co/image/08e11eb305144d839944ec5837d0aed055bd09aa",
+      "width" : 300
+    }, {
+      "height" : 64,
+      "url" : "https://i.scdn.co/image/93b54291c5e59308dd1e64d4db933dcd81bdbcfb",
+      "width" : 64
+    } ],
+    "name" : "Like That",
+    "release_date" : "2019-06-12",
+    "release_date_precision" : "day",
+    "total_tracks" : 2,
+    "type" : "album",
+    "uri" : "spotify:album:2UbB7skvY3ezHaD88VQ9OK"
+  },
+  "artists" : [ {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/0YVFdCm1S3ikQU0yl110lu"
+    },
+    "href" : "https://api.spotify.com/v1/artists/0YVFdCm1S3ikQU0yl110lu",
+    "id" : "0YVFdCm1S3ikQU0yl110lu",
+    "name" : "Disero",
+    "type" : "artist",
+    "uri" : "spotify:artist:0YVFdCm1S3ikQU0yl110lu"
+  }, {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/2ezBCz6kkE2zjl04mecpUM"
+    },
+    "href" : "https://api.spotify.com/v1/artists/2ezBCz6kkE2zjl04mecpUM",
+    "id" : "2ezBCz6kkE2zjl04mecpUM",
+    "name" : "Joshua Smith",
+    "type" : "artist",
+    "uri" : "spotify:artist:2ezBCz6kkE2zjl04mecpUM"
+  } ],
+  "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+  "disc_number" : 1,
+  "duration_ms" : 231931,
+  "explicit" : false,
+  "external_ids" : {
+    "isrc" : "CA6D21900184"
+  },
+  "external_urls" : {
+    "spotify" : "https://open.spotify.com/track/7tsSiLdnuMpE9x9IL5VRiX"
+  },
+  "href" : "https://api.spotify.com/v1/tracks/7tsSiLdnuMpE9x9IL5VRiX",
+  "id" : "7tsSiLdnuMpE9x9IL5VRiX",
+  "is_local" : false,
+  "name" : "Like That - Acoustic",
+  "popularity" : 36,
+  "preview_url" : "https://p.scdn.co/mp3-preview/3909cc0d7056fe46c88426f3bfe7155d5f19e248?cid=55fa4e0de6184a4abd1a8cf0de5f5b1d",
+  "track_number" : 2,
+  "type" : "track",
+  "uri" : "spotify:track:7tsSiLdnuMpE9x9IL5VRiX"
+}

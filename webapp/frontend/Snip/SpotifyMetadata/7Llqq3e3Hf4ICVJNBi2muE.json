@@ -1,0 +1,69 @@
+﻿{
+  "album" : {
+    "album_type" : "single",
+    "artists" : [ {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/1YYJxpOXYk1z1WtqdeLMkn"
+      },
+      "href" : "https://api.spotify.com/v1/artists/1YYJxpOXYk1z1WtqdeLMkn",
+      "id" : "1YYJxpOXYk1z1WtqdeLMkn",
+      "name" : "Habstrakt",
+      "type" : "artist",
+      "uri" : "spotify:artist:1YYJxpOXYk1z1WtqdeLMkn"
+    } ],
+    "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/album/1Sm6KUWtB2ThzdSbyaP0Sr"
+    },
+    "href" : "https://api.spotify.com/v1/albums/1Sm6KUWtB2ThzdSbyaP0Sr",
+    "id" : "1Sm6KUWtB2ThzdSbyaP0Sr",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/801f61eb4b0d7074b099807e1b8ace03bd1c44a9",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://i.scdn.co/image/bfd7fb735e0d584ab6bad0b64fb37ff7fa1d074d",
+      "width" : 300
+    }, {
+      "height" : 64,
+      "url" : "https://i.scdn.co/image/1edb1142a43783f03b0949028fc223de1a779a90",
+      "width" : 64
+    } ],
+    "name" : "Infinite",
+    "release_date" : "2019-06-06",
+    "release_date_precision" : "day",
+    "total_tracks" : 1,
+    "type" : "album",
+    "uri" : "spotify:album:1Sm6KUWtB2ThzdSbyaP0Sr"
+  },
+  "artists" : [ {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/1YYJxpOXYk1z1WtqdeLMkn"
+    },
+    "href" : "https://api.spotify.com/v1/artists/1YYJxpOXYk1z1WtqdeLMkn",
+    "id" : "1YYJxpOXYk1z1WtqdeLMkn",
+    "name" : "Habstrakt",
+    "type" : "artist",
+    "uri" : "spotify:artist:1YYJxpOXYk1z1WtqdeLMkn"
+  } ],
+  "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+  "disc_number" : 1,
+  "duration_ms" : 233482,
+  "explicit" : false,
+  "external_ids" : {
+    "isrc" : "CA6D21900168"
+  },
+  "external_urls" : {
+    "spotify" : "https://open.spotify.com/track/7Llqq3e3Hf4ICVJNBi2muE"
+  },
+  "href" : "https://api.spotify.com/v1/tracks/7Llqq3e3Hf4ICVJNBi2muE",
+  "id" : "7Llqq3e3Hf4ICVJNBi2muE",
+  "is_local" : false,
+  "name" : "Infinite",
+  "popularity" : 53,
+  "preview_url" : "https://p.scdn.co/mp3-preview/b4fd8a503db4094909e28a2e56d4c8b8c28ba456?cid=55fa4e0de6184a4abd1a8cf0de5f5b1d",
+  "track_number" : 1,
+  "type" : "track",
+  "uri" : "spotify:track:7Llqq3e3Hf4ICVJNBi2muE"
+}

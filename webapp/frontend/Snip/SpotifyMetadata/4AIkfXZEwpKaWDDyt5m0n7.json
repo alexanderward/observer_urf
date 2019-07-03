@@ -1,0 +1,87 @@
+﻿{
+  "album" : {
+    "album_type" : "single",
+    "artists" : [ {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/1yShtQaHjChbToQboKRzgH"
+      },
+      "href" : "https://api.spotify.com/v1/artists/1yShtQaHjChbToQboKRzgH",
+      "id" : "1yShtQaHjChbToQboKRzgH",
+      "name" : "ShockOne",
+      "type" : "artist",
+      "uri" : "spotify:artist:1yShtQaHjChbToQboKRzgH"
+    }, {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/0QJKELJZZuLAjqLOOixJm5"
+      },
+      "href" : "https://api.spotify.com/v1/artists/0QJKELJZZuLAjqLOOixJm5",
+      "id" : "0QJKELJZZuLAjqLOOixJm5",
+      "name" : "The Bloody Beetroots",
+      "type" : "artist",
+      "uri" : "spotify:artist:0QJKELJZZuLAjqLOOixJm5"
+    } ],
+    "available_markets" : [ "AD", "AE", "AR", "AT", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/album/51uFvLQKu0UsvO9wPCdBnD"
+    },
+    "href" : "https://api.spotify.com/v1/albums/51uFvLQKu0UsvO9wPCdBnD",
+    "id" : "51uFvLQKu0UsvO9wPCdBnD",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/6d48de7a4bc3f4dfd7b8ea6b50bebd0ad3003933",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://i.scdn.co/image/61903c24b879ba854e274e3d714a8e0bf467b72b",
+      "width" : 300
+    }, {
+      "height" : 64,
+      "url" : "https://i.scdn.co/image/334506449be5bc80c2450d9a6763fcfb1d661348",
+      "width" : 64
+    } ],
+    "name" : "Run",
+    "release_date" : "2019-06-27",
+    "release_date_precision" : "day",
+    "total_tracks" : 1,
+    "type" : "album",
+    "uri" : "spotify:album:51uFvLQKu0UsvO9wPCdBnD"
+  },
+  "artists" : [ {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/1yShtQaHjChbToQboKRzgH"
+    },
+    "href" : "https://api.spotify.com/v1/artists/1yShtQaHjChbToQboKRzgH",
+    "id" : "1yShtQaHjChbToQboKRzgH",
+    "name" : "ShockOne",
+    "type" : "artist",
+    "uri" : "spotify:artist:1yShtQaHjChbToQboKRzgH"
+  }, {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/0QJKELJZZuLAjqLOOixJm5"
+    },
+    "href" : "https://api.spotify.com/v1/artists/0QJKELJZZuLAjqLOOixJm5",
+    "id" : "0QJKELJZZuLAjqLOOixJm5",
+    "name" : "The Bloody Beetroots",
+    "type" : "artist",
+    "uri" : "spotify:artist:0QJKELJZZuLAjqLOOixJm5"
+  } ],
+  "available_markets" : [ "AD", "AE", "AR", "AT", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+  "disc_number" : 1,
+  "duration_ms" : 301984,
+  "explicit" : false,
+  "external_ids" : {
+    "isrc" : "CA6D21900179"
+  },
+  "external_urls" : {
+    "spotify" : "https://open.spotify.com/track/4AIkfXZEwpKaWDDyt5m0n7"
+  },
+  "href" : "https://api.spotify.com/v1/tracks/4AIkfXZEwpKaWDDyt5m0n7",
+  "id" : "4AIkfXZEwpKaWDDyt5m0n7",
+  "is_local" : false,
+  "name" : "Run",
+  "popularity" : 36,
+  "preview_url" : "https://p.scdn.co/mp3-preview/951c37744eb34a56c750629f92c75ac404dca05d?cid=55fa4e0de6184a4abd1a8cf0de5f5b1d",
+  "track_number" : 1,
+  "type" : "track",
+  "uri" : "spotify:track:4AIkfXZEwpKaWDDyt5m0n7"
+}

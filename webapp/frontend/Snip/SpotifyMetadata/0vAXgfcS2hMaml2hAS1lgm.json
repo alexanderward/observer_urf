@@ -1,0 +1,87 @@
+﻿{
+  "album" : {
+    "album_type" : "single",
+    "artists" : [ {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/2y8eOaQNjiIuITkz6zGfgL"
+      },
+      "href" : "https://api.spotify.com/v1/artists/2y8eOaQNjiIuITkz6zGfgL",
+      "id" : "2y8eOaQNjiIuITkz6zGfgL",
+      "name" : "Julian Calor",
+      "type" : "artist",
+      "uri" : "spotify:artist:2y8eOaQNjiIuITkz6zGfgL"
+    }, {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/0l6LU5NRvLTVeRDJZznwLX"
+      },
+      "href" : "https://api.spotify.com/v1/artists/0l6LU5NRvLTVeRDJZznwLX",
+      "id" : "0l6LU5NRvLTVeRDJZznwLX",
+      "name" : "Ava Silver",
+      "type" : "artist",
+      "uri" : "spotify:artist:0l6LU5NRvLTVeRDJZznwLX"
+    } ],
+    "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/album/4E1pzyWvQTgHieT2pyrPrS"
+    },
+    "href" : "https://api.spotify.com/v1/albums/4E1pzyWvQTgHieT2pyrPrS",
+    "id" : "4E1pzyWvQTgHieT2pyrPrS",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/0a1e9650dfccee9e358594138f85b9c239463077",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://i.scdn.co/image/695f300975956a6dadbbc6cc4be8af70af3ddc51",
+      "width" : 300
+    }, {
+      "height" : 64,
+      "url" : "https://i.scdn.co/image/739f7b458ce975ca5cdd6a28e88422dfb67a7c85",
+      "width" : 64
+    } ],
+    "name" : "No Fear Anymore",
+    "release_date" : "2019-05-28",
+    "release_date_precision" : "day",
+    "total_tracks" : 1,
+    "type" : "album",
+    "uri" : "spotify:album:4E1pzyWvQTgHieT2pyrPrS"
+  },
+  "artists" : [ {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/2y8eOaQNjiIuITkz6zGfgL"
+    },
+    "href" : "https://api.spotify.com/v1/artists/2y8eOaQNjiIuITkz6zGfgL",
+    "id" : "2y8eOaQNjiIuITkz6zGfgL",
+    "name" : "Julian Calor",
+    "type" : "artist",
+    "uri" : "spotify:artist:2y8eOaQNjiIuITkz6zGfgL"
+  }, {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/0l6LU5NRvLTVeRDJZznwLX"
+    },
+    "href" : "https://api.spotify.com/v1/artists/0l6LU5NRvLTVeRDJZznwLX",
+    "id" : "0l6LU5NRvLTVeRDJZznwLX",
+    "name" : "Ava Silver",
+    "type" : "artist",
+    "uri" : "spotify:artist:0l6LU5NRvLTVeRDJZznwLX"
+  } ],
+  "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "US", "UY", "VN", "ZA" ],
+  "disc_number" : 1,
+  "duration_ms" : 202285,
+  "explicit" : false,
+  "external_ids" : {
+    "isrc" : "CA6D21900074"
+  },
+  "external_urls" : {
+    "spotify" : "https://open.spotify.com/track/0vAXgfcS2hMaml2hAS1lgm"
+  },
+  "href" : "https://api.spotify.com/v1/tracks/0vAXgfcS2hMaml2hAS1lgm",
+  "id" : "0vAXgfcS2hMaml2hAS1lgm",
+  "is_local" : false,
+  "name" : "No Fear Anymore",
+  "popularity" : 54,
+  "preview_url" : "https://p.scdn.co/mp3-preview/56536ed0c5233add678184f013fa558e66b1f739?cid=55fa4e0de6184a4abd1a8cf0de5f5b1d",
+  "track_number" : 1,
+  "type" : "track",
+  "uri" : "spotify:track:0vAXgfcS2hMaml2hAS1lgm"
+}

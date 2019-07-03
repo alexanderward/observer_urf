@@ -39,12 +39,11 @@ carousel {
   align-items: center;
   display: flex;
   justify-content: center;
-  padding: 8px 20px;
+  padding: 20px 20px;
   color: white;
-  font-size: 20px;
+  font-size: xx-large;
   background: rgba(0,0,0,.54);
   font-family: 'Montserrat', sans-serif;
-  margin-top: 1em;
 }
 
 .winner-red{
@@ -76,21 +75,26 @@ carousel {
 }
 
 .stats-image{
-  width: 2.5em;
+  width: 70px !important;
+  height: 70px !important;
   margin-bottom: 15px;
 }
 
 .summoner-icon{
-  width: 18px !important;
-  height: 18px !important;
+  width: 35px !important;
+  height: 35px !important;
+}
+
+.top-margin{
+  margin-top: 10px;
 }
 
 
 .jjLgKi {
   display: flex;
   flex-direction: row;
-  max-height: 1rem;
-  padding: .8rem 1rem 1rem;
+  max-height: 5em;
+  padding: 1.5em 4em 2em;
 }
 
 .gqsiOt {
@@ -98,7 +102,6 @@ carousel {
   flex-direction: row;
   -webkit-box-align: center;
   align-items: center;
-  flex: 0 0 33%;
   margin: 1rem 0px;
 }
 
@@ -212,4 +215,17 @@ img.icon-perks--8100 {
   border-color: rgb(55, 43, 96);
   border-image: initial;
   border-radius: 4px;
+}
+
+
+.error{
+  /* position: fixed; */
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    overflow: auto;
 }
