@@ -7,3 +7,6 @@ DATABASES = {
         'ATOMIC_REQUESTS': True
     }
 }
+
+ALLOWED_HOSTS = ['*']
+DEBUG = True

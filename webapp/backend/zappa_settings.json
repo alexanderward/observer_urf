@@ -1,0 +1,28 @@
+{
+    "prod": {
+        "aws_region": "us-east-1",
+        "django_settings": "service.settings.prod",
+        "profile_name": "default",
+        "project_name": "backend",
+        "runtime": "python3.7",
+        "s3_bucket": "observer-urf",
+        "cors": true,
+        "timeout_seconds": 900,
+        "base_path": "prod",
+        "environment_variables": {
+            "environment": "PROD"
+        },
+        "certificate_arn": "arn:aws:acm:us-east-1:336881050508:certificate/a87223c6-f734-42f8-8848-0324aa79eaea",
+        "domain": "www.observerurf.com",
+        "vpc_config": {
+            "SubnetIds": [
+                "subnet-9450aff3",
+                "subnet-4158517e",
+                "subnet-02ac1f48"
+            ],
+            "SecurityGroupIds": [
+                "sg-01a95561258ebec6e"
+            ]
+        }
+    }
+}

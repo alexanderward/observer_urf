@@ -19,7 +19,6 @@ lib64/
 parts/
 sdist/
 var/
-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
@@ -104,3 +103,7 @@ venv.bak/
 .mypy_cache/
 
 .idea
+
+api_data/
+
+**/Snip/SpotifyMetadata/*.json

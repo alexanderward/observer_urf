@@ -1,11 +1,28 @@
 import json
+import time
+from functools import wraps
 
 import requests
 import pprint
 from spectator.utils.constants import api_endpoint
-from spectator.utils.notify import notify_me
+from spectator.utils.gmail import send_email
 
 
+def wakeup_rds(func):
+    @wraps(func)
+    def function_wrapper(x):
+        status_code = None
+        while status_code is not 200:
+            resp = requests.get(url="{}/api/bot-commands/text-list/".format(api_endpoint))
+            status_code = resp.status_code
+            if status_code is not 200:
+                time.sleep(1)
+        return func(x)
+
+    return function_wrapper
+
+
+@wakeup_rds
 def send_pregame_stats(stats):
     teams = []
     players = []
@@ -29,17 +46,25 @@ def send_pregame_stats(stats):
         "league": stats.get('league'),
         "teams": teams,
         "version": stats.get("version"),
-        "game_participants": players
+        "game_participants": players,
+        "seed": stats.get("seed")
     }
-    # pprint.pprint(data)
     resp = requests.post(url="{}/api/games/".format(api_endpoint), json=data)
-    if resp.status_code != 201:
-        notify_me("Unable to create pregame stats")
+    if resp.status_code != 201 and "Game already Exists" not in resp.text:
+        send_email("Failed to send pregame stats", {
+            "url": "{}/api/games/".format(api_endpoint),
+            "data": data,
+            "response": resp.json()
+        })
 
 
+@wakeup_rds
 def send_postgame_stats(stats):
     resp = requests.post(url="{}/api/games/{}/postgame/".format(api_endpoint, stats.get("gameId")),
                          json={"data": json.dumps(stats)})
-    print(resp.json())
     if resp.status_code != 200:
-        notify_me("Unable to create postagme stats")
+        send_email("Failed to send postgame stats", {
+            "url": "{}/api/games/{}/postgame/".format(api_endpoint, stats.get("gameId")),
+            "data": stats,
+            "response": resp.json()
+        })

@@ -20,6 +20,9 @@ import { InfoComponent } from './components/overlay/info/info.component';
 import { DdragonService } from './services/ddragon.service';
 import { PostGameResolver } from './components/postgame/ddragonresolver';
 import { TimerComponent } from './components/overlay/timer/timer.component';
+import { GifsComponent } from './components/postgame/gifs/gifs.component';
+import { FormatTimePipe } from './components/overlay/timer/timer.pipe';
+import { BetsComponent } from './components/overlay/bets/bets.component';
 
 
 export const routes = [
@@ -50,22 +53,33 @@ export const routes = [
   },
   {
     path: 'postgame',
-    component: SlideshowComponent,
-    resolve: { data: PostGameResolver }
-  }
+    children: [
+      {
+        path: '',
+        component: SlideshowComponent,
+        resolve: { data: PostGameResolver },
+      },
+      {
+        path: 'gifs',
+        component: GifsComponent,
+        resolve: {},
+      },
+    ]
+  },
 
   // Not found
-  // { path: '**', redirectTo: 'my-recipes' }
+  { path: '**', redirectTo: '' }
 
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
+    FormatTimePipe,
     LeagueComponent,
     OddsComponent,
     SlideshowComponent,
-    CarouselComponent, CarouselItemDirective, CarouselItemElementDirective, InfoComponent, TimerComponent
+    CarouselComponent, CarouselItemDirective, CarouselItemElementDirective, InfoComponent, TimerComponent, GifsComponent, BetsComponent
   ],
   imports: [
     BrowserModule,

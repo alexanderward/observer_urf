@@ -1,24 +1,68 @@
 import json
-import pprint
+import os
 import subprocess
 import sys
 import time
+import traceback
+from uuid import uuid4
 
 import keyboard
 import requests
 from requests import HTTPError
 from riotwatcher import RiotWatcher
 
+from spectator.utils.spotify import Spotify
 from spectator.utils.enums import Region, MatchTypes, Leagues
 from spectator.utils.misc_functions import get_random_item, sort_list
 from spectator.utils.interval import RepeatedTimer
-from spectator.utils.rest_api import send_pregame_stats, send_postgame_stats
+from spectator.utils.rest_api import send_pregame_stats, send_postgame_stats, wakeup_rds
+import simplejson
+import logging
+
+logger = logging.getLogger("spectator")
+logger.setLevel(logging.DEBUG)
+logger.propagate = False
+
+# create console handler and set level to debug
+ch = logging.StreamHandler()
+ch.setLevel(logging.DEBUG)
+
+# create formatter
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+# add formatter to ch
+ch.setFormatter(formatter)
+
+# add ch to logger
+logger.addHandler(ch)
+
+
+def format_message(seed, message):
+    return "Seed:{} - {}".format(seed, message)
+
+
+def save_fetched_data(name, seed, data, subfolder=None):
+    folder = "{}/{}".format("api_data", seed)
+    if not os.path.exists(folder):
+        os.mkdir(folder)
+    if subfolder:
+        folder = "{}/{}".format(folder, subfolder)
+        if not os.path.exists(folder):
+            os.mkdir(folder)
+
+    filename = "{}/{}.json".format(folder, name)
+    logger.info(format_message(seed, "Saving data for {} to {}".format(name, filename)))
+    with open(filename, 'w') as f:
+        f.write(simplejson.dumps(simplejson.loads(simplejson.dumps(data)), indent=4, sort_keys=True))
 
 
 class Game(object):
     champions = {}
 
-    def __init__(self, game, api):
+    def __init__(self, game, api, seed):
+        self.seed = seed
+        logger.info(format_message(self.seed, "Game found: {}".format(game['gameId'])))
+        save_fetched_data("game", seed, game)
         self.version = requests.get("https://ddragon.leagueoflegends.com/api/versions.json").json()[0]
         champions_data = requests.get("https://ddragon.leagueoflegends.com/cdn/{}/data/en_US/champion.json"
                                       "".format(self.version)).json()
@@ -38,12 +82,14 @@ class Game(object):
                                                              self.game['observers']['encryptionKey'],
                                                              self.game['gameId'], self.game['platformId'])
 
+        logger.info(format_message(self.seed, "Starting spectator mode for game: {}".format(self.game['gameId'])))
+
         self.proc = subprocess.Popen(cmd,
                                      stdout=subprocess.PIPE, stderr=subprocess.STDOUT, stdin=subprocess.PIPE,
                                      shell=True)
         for line in iter(self.proc.stdout.readline, b''):
             decoded = line.decode(sys.stdout.encoding)
-            print(decoded)
+            # print(decoded)
 
             if "Failed to connect" in decoded or \
                     "Finished Play game" in decoded or \
@@ -54,6 +100,9 @@ class Game(object):
                 return self.kill()
 
             elif "GAMESTATE_GAMELOOP EndRender & EndFrame" in decoded:
+                logger.info(format_message(self.seed, "Game {} started.  Pausing music and setting up"
+                                                      " UI".format(self.game['gameId'])))
+                Spotify.pause()
                 # Sets up UI
                 keyboard.send('o')
                 keyboard.send('n')
@@ -66,16 +115,25 @@ class Game(object):
             if self.hud_view_toggle.is_running:
                 self.hud_view_toggle.stop()
                 time.sleep(.5)  # A small buffer so we don't get keystrokes after proc ends
+            logger.info(format_message(self.seed, "Game {} ended.  Exiting spectator mode".format(self.game['gameId'])))
             subprocess.Popen("TASKKILL /F /PID {pid} /T".format(pid=self.proc.pid))
+        time.sleep(1)  # small buffer needed for window to close
+        logger.info(format_message(self.seed, "Starting music"))
+        Spotify.next()
         return error
 
     def send_postgame_stats(self, stats=None):
         while not stats:
             try:
+                logger.info(format_message(self.seed, "Retrieving postgame "
+                                                      "stats for game: {}".format(self.game['gameId'])))
                 stats = self.api.match.by_id(self.game.get('platformId'), self.game.get('gameId'))
             except Exception as e:
-                print("Stats not ready yet.  Waiting 5 seconds. Error: {}".format(str(e)))
+                logger.warning(format_message(self.seed, "Stats not ready yet.  "
+                                                         "Waiting 5 seconds. Error: {}".format(str(e))))
                 time.sleep(5)
+        logger.info(format_message(self.seed, "Sending postgame stats for game: {}".format(self.game['gameId'])))
+        save_fetched_data("postgame-stats", self.seed, stats)
         send_postgame_stats(stats)
 
     def send_pregame_stats(self):
@@ -88,9 +146,15 @@ class Game(object):
         highest_league = None
 
         leagues = Leagues.get_names()
+        logger.info(format_message(self.seed, "Generating pregame stats for game: {}".format(self.game['gameId'])))
         for participant in self.game['participants']:
+            logger.info(format_message(self.seed, "Participant: {}".format(participant.get("summonerName"))))
             summoner = self.api.summoner.by_name(self.game.get("platformId"), participant.get("summonerName"))
-            player_stats = self.api.league.by_summoner(self.game.get("platformId"), summoner.get("id"))[0]
+            save_fetched_data(participant.get("summonerName"), self.seed, summoner, subfolder="summoner")
+            player_stats = self.api.league.by_summoner(self.game.get("platformId"), summoner.get("id"))
+            save_fetched_data("{}-stats".format(participant.get("summonerName")), self.seed,
+                              player_stats, subfolder="summoner")
+            player_stats = player_stats[0]
             win_rate = (float(player_stats["wins"]) / float(player_stats["losses"] + player_stats["wins"])) * 100
             champion = self.champions[str(participant['championId'])]
             player = dict(league=player_stats["tier"],
@@ -116,8 +180,10 @@ class Game(object):
                  "region": self.game['platformId'],
                  "game_id": self.game.get("gameId"),
                  "game_type": self.game.get("gameQueueConfigId"),
-                 "version": self.version
-                 }
+                 "version": self.version,
+                 "seed": self.seed}
+        save_fetched_data("pregame-stats", self.seed, stats)
+        logger.info(format_message(self.seed, "Sending pregame stats for game: {}".format(self.game['gameId'])))
         send_pregame_stats(stats)
 
 
@@ -129,12 +195,19 @@ class LeagueAPI(object):
 
     def __init__(self, key):
         self.api = RiotWatcher(key)
+        self.seed = None
 
-    def get_featured_games(self):
+    def update_seed(self):
+        self.seed = uuid4().hex
+
+    def get_featured_games(self, blacklist_ids):
+        logger.info(format_message(self.seed, "Generating featured games list"))
         for region in self.regions:
             games = self.api.spectator.featured_games(region)
             for game_ in games['gameList']:
-                self.featured_games[MatchTypes.get_name_by_value(game_.get("gameQueueConfigId"))][region].append(game_)
+                if game_['gameId'] not in blacklist_ids:
+                    self.featured_games[MatchTypes.get_name_by_value(game_.
+                                                                     get("gameQueueConfigId"))][region].append(game_)
 
         # Sort by timestamp descending
         for region in self.regions:
@@ -143,10 +216,14 @@ class LeagueAPI(object):
                                                                     'gameStartTime',
                                                                     descending=True)
 
-    def find_game(self):
+    def find_game(self, blacklist_ids=None):
+        self.update_seed()
+        logger.info(format_message(self.seed, "Searching for game."))
+        if blacklist_ids is None:
+            blacklist_ids = []
         for match_type in MatchTypes.get_names():
             self.featured_games[match_type] = {region: [] for region in self.regions}
-        self.get_featured_games()
+        self.get_featured_games(blacklist_ids)
 
         game_rankings = {league: [] for league in self.leagues}
 
@@ -168,38 +245,43 @@ class LeagueAPI(object):
                             continue
             for league in self.leagues:
                 if game_rankings[league]:
-                    return Game(game_rankings[league][0], self.api)
+                    return Game(game_rankings[league][0], self.api, self.seed)
         for region in self.regions:
             for match_type in [x for x in [MatchTypes.NORMAL_3V3_BLIND_PICK.name,
                                            MatchTypes.RANKED_3V3_FLEX.name,
                                            MatchTypes.ARAM.name]]:
                 if self.featured_games[match_type][region]:
-                    return Game(get_random_item(self.featured_games[match_type][region]), self.api)
+                    return Game(get_random_item(self.featured_games[match_type][region]), self.api, self.seed)
 
 
-def run(debug=False):
-    api = LeagueAPI("RGAPI-cd7a25ab-3f5e-4971-9b02-552185b4ecd8")
-
-    if not debug:
-        while True:
-            game = api.find_game()
-            game.send_pregame_stats()
+def start_game(game, blacklist_ids, mock=False):
+    try:
+        game.send_pregame_stats()
+        if not mock:
             error = game.spectate()
             if not error:
                 game.send_postgame_stats()
             # break
-            print("Waiting ~2 minutes")
+            logger.info("Intermission - Waiting ~2 minutes")
             time.sleep(126)
-    else:
-        with open("notes/game.json", 'r') as f:
-            game = Game(json.load(f), api.api)  # use this to get the currentAccountID & get playerHistory
-        # game.send_pregame_stats()
+        else:
+            game.send_postgame_stats()
+        blacklist_ids = []
+    except:
+        logger.error(format_message(game.seed, "Something went wrong.  Blacklisting ID for game"
+                                               ": {}.".format(game.game['gameId'])))
+        logger.error(format_message(game.seed, traceback.format_exc()))
+        blacklist_ids.append(game.game['gameId'])
+    return blacklist_ids
 
-        with open("notes/match_stats.json", 'r') as f:
-            game.send_postgame_stats(json.load(f))
+
+def run():
+    api = LeagueAPI("RGAPI-036aa75d-dc45-4f15-9eb0-a66cd68c47fd")
+    blacklist_ids = []
+    while True:
+        game = api.find_game(blacklist_ids)
+        blacklist_ids = start_game(game, blacklist_ids)
 
 
 if __name__ == "__main__":
-    # import timeit
-    # print(timeit.timeit("run()", setup="from __main__ import run", number=1))
-    run(debug=False)
+    run()

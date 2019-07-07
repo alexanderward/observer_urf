@@ -1,6 +1,9 @@
+from django.utils import timezone
 from rest_framework import serializers
 from drf_writable_nested import WritableNestedModelSerializer
-from app.models import Game, Team, Participant, PostgameStats
+from rest_framework.exceptions import ValidationError
+
+from app.models import Game, Team, Participant, PostgameStats, BotCommand
 
 
 class BaseSerializer(WritableNestedModelSerializer):
@@ -51,8 +54,13 @@ class PostGameSerializer(BaseSerializer):
 class GameSerializer(BaseSerializer):
 
     def create(self, validated_data):
-        validated_data['postgame'] = PostgameStats.objects.create(data={})
-        return super().create(validated_data)
+        try:
+            Game.objects.get(pk=self.data.get('id'))
+        except Game.DoesNotExist:
+            validated_data['postgame'] = PostgameStats.objects.create(data={})
+            validated_data['close_bets_at'] = timezone.now() + timezone.timedelta(minutes=3)
+            return super().create(validated_data)
+        raise ValidationError("Game already Exists")
 
     id = serializers.IntegerField()
     game_type = serializers.IntegerField()
@@ -63,8 +71,19 @@ class GameSerializer(BaseSerializer):
     game_participants = ParticipantSerializer(many=True)
     postgame = PostGameSerializer(read_only=True)
     version = serializers.CharField()
+    seed = serializers.CharField()
+    close_bets_at = serializers.DateTimeField(read_only=True)
 
     class Meta:
         model = Game
         fields = '__all__'
-        read_only_fields = ('created_at', 'postgame')
+        read_only_fields = ('created_at', 'postgame', 'close_bets_at')
+
+
+class BotCommandSerializer(BaseSerializer):
+    name = serializers.CharField()
+    description = serializers.CharField()
+
+    class Meta:
+        model = BotCommand
+        fields = '__all__'

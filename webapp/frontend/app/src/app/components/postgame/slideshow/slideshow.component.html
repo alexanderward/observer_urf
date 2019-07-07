@@ -3,11 +3,12 @@
 
     <carousel class="row align-items-center justify-content-center" [timer]="timer">
     <!-- <carousel class="row align-items-center justify-content-center"> -->
-
       <ng-container *carouselItem>
-        <div class="winner-label font row" [ngClass]="winningTeam == 'Red' ? 'red': 'blue'">{{winningTeam}} team
+        <div *ngIf="winningTeam" class="winner-label font row" [ngClass]="winningTeam == 'Red' ? 'red': 'blue'">
+          {{winningTeam}} team
           victory!
         </div>
+        <div *ngIf="!winningTeam" class="winner-label font row">Draw!</div>
         <div class="slide-item"
           style="background-repeat: no-repeat; background-size:100%; background-image: url(assets/victor.jpg);">
 
@@ -35,7 +36,7 @@
                 </mat-grid-tile>
               </div>
             </ng-container>
-            </mat-grid-list>
+          </mat-grid-list>
         </div>
       </ng-container>
       <ng-container *carouselItem>
@@ -145,6 +146,12 @@
               </div>
             </ng-container>
           </div>
+        </div>
+      </ng-container>
+      <ng-container *carouselItem>
+        <div class="slide-item container-fluid"
+          style="background-repeat: no-repeat; background-size:100%; background: black; padding: 5px;">
+          <app-gifs [timer]="timer/3"></app-gifs>
         </div>
       </ng-container>
     </carousel>

@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils import timezone
+from rest_framework.exceptions import ValidationError
 
 
 class BaseModel(models.Model):
@@ -33,9 +35,71 @@ class PostgameStats(BaseModel):
 
 
 class Game(BaseModel):
-    id = models.IntegerField(primary_key=True, editable=False)  # gameId
+    id = models.BigIntegerField(primary_key=True, editable=False)  # gameId
     game_type = models.IntegerField()  # gameQueueConfigId
     region = models.CharField(max_length=10)  # platformId
     league = models.CharField(max_length=25)
     postgame = models.ForeignKey("PostgameStats", on_delete=models.CASCADE, related_name="game")
     version = models.CharField(max_length=255)
+    seed = models.CharField(max_length=32)
+    updated_at = models.DateTimeField(auto_now=True)
+    close_bets_at = models.DateTimeField()
+
+
+class BotCommand(BaseModel):
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+
+
+class TwitchUserManager(models.Manager):
+    def get_or_create(self, username=None, user_id=None):
+        obj, created = super().get_or_create(
+            username=username,
+            user_id=user_id
+        )
+        return obj
+
+
+class TwitchUser(BaseModel):
+    username = models.CharField(max_length=255)
+    user_id = models.CharField(max_length=255)
+    balance = models.BigIntegerField(default=1000)
+    free_points_game_id = models.BigIntegerField(blank=True, null=True)
+
+    objects = TwitchUserManager()
+
+    def bet(self, game, color, amount):
+        if game.close_bets_at < timezone.now():
+            raise ValidationError("Betting is closed for this game.")
+        if amount > self.balance:
+            raise ValidationError("Insufficient balance.")
+        vote, created = Bet.objects.get_or_create(twitch_user=self, game=game, defaults={"amount": amount,
+                                                                                         "color": color})
+        if not created:
+            raise ValidationError("{} has already bet on this match.".format(self.username))
+        self.balance -= amount
+        self.save()
+
+    def get_free_points(self, game):
+        if self.free_points_game_id != game.id:
+            self.balance += 1000
+            self.free_points_game_id = game.id
+            self.save()
+        else:
+            raise ValidationError("{} has already earned free points this match. "
+                                  " Wait until next match to earn more.".format(self.username))
+
+
+class Bet(BaseModel):
+    twitch_user = models.ForeignKey(TwitchUser, on_delete=models.CASCADE)
+    game = models.ForeignKey(Game, on_delete=models.CASCADE, related_name="bets")
+    color = models.CharField(max_length=255)
+    amount = models.BigIntegerField()
+    complete = models.BooleanField(default=False)
+
+    def pay_out(self, winning_color):
+        if not self.complete and winning_color.upper() == self.color:
+            self.twitch_user.balance += (self.amount * 2)
+            self.twitch_user.save()
+            self.complete = True
+            self.save()

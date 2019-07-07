@@ -25,6 +25,19 @@ html, body {margin:0;padding:0;height:100%;overflow: hidden;}
 
 /*/ end count stats /*/
 
+.panel:before {
+    background: none;
+    border: 10px solid #182722;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    pointer-events: none;
+  }
+
 .panel {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -35,13 +48,13 @@ html, body {margin:0;padding:0;height:100%;overflow: hidden;}
     -ms-flex-direction: column;
     flex-direction: column;
     position: relative;
-    background-color: #1e1919;
+    background-color: #030d0a;
     -webkit-box-shadow: 0 0 13px 0 rgba(62,44,90,.08);
     box-shadow: 0 0 13px 0 rgba(62,44,90,.08);
     margin-bottom: 1.5rem;
-    border-radius: 4px;
+    /* border-radius: 4px; */
     color: white;
-    border: 15px outset rgb(123, 110, 73);
+    border: 10px solid #4f4c33;
     -webkit-transition: border .5s ease-out;
     transition: border .5s ease-out;
     font-family: 'Montserrat', sans-serif;
@@ -54,7 +67,6 @@ html, body {margin:0;padding:0;height:100%;overflow: hidden;}
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    background: #fff;
     min-height: 3rem;
     border-bottom: 1px solid rgba(0,0,0,.07);
     border-radius: 4px 4px 0 0;
@@ -79,7 +91,6 @@ html, body {margin:0;padding:0;height:100%;overflow: hidden;}
     -ms-flex-align: center;
     align-items: center;
     line-height: 3rem;
-    color: inherit;
     color: white;
     position: relative;
     font-weight: 500;
@@ -96,8 +107,7 @@ html, body {margin:0;padding:0;height:100%;overflow: hidden;}
 
 .panel-tag {
     padding: 5rem;
-    margin-bottom: 2rem;
-    /* border-left: 3px solid #1dc9b7; */
+    margin: 15px 15px 0 15px !important;
     background: red;
     opacity: .8;
     font-weight: 400;

@@ -4,7 +4,7 @@ from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import routers, permissions
 
-from app.views import GameViewSet
+from app.views import GameViewSet, BotCommandsViewSet
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -18,6 +18,7 @@ schema_view = get_schema_view(
 
 router = routers.DefaultRouter()
 router.register(r'games', GameViewSet)
+router.register(r'bot-commands', BotCommandsViewSet)
 
 urlpatterns = [
     url(r'^api/', include(router.urls)),

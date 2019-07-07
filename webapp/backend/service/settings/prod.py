@@ -1,6 +1,8 @@
+from .base import *
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'mysql.connector.django',
         'NAME': "urf",
         'USER': "admin",
         'PASSWORD': "alex3412",
@@ -12,3 +14,5 @@ DATABASES = {
         }
     },
 }
+
+DEBUG = True

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  url: "http://localhost:8000/api"
+  // url: "http://localhost:8000/api"
+  url: "https://www.observerurf.com/api"
 };
 
 /*

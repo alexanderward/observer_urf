@@ -1,0 +1,10 @@
+Django==2.2.2
+zappa
+django-cors-headers==2.4.0
+django-cors-middleware==1.3.1
+djangorestframework==3.9.4
+drf-yasg==1.16.0
+drf-writable-nested==0.5.1
+django-s3-storage==0.12.4
+lambda-packages
+mysql-connector-python
