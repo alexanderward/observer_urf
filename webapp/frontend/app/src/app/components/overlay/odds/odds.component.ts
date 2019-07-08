@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Game, Team } from 'src/app/models/game.model';
-import { isUndefined } from 'util';
+import { isUndefined, isNull } from 'util';
 
 @Component({
   selector: 'app-odds',
@@ -36,11 +36,14 @@ export class OddsComponent implements OnInit {
   ngOnInit() {
     let game: Game = this.route.snapshot.data.game as Game;
     this.team_id = this.route.snapshot.params['team_id'];
-    let team: Team = game.teams.find(x=>x.team_id == this.team_id);
-    if(!isUndefined(team)){
-      const sum: number = +game.teams.map(x=>x.win_rate).reduce((sum, x) => sum + x);
-      this.odds = (+team.win_rate*100/sum).toFixed(2);
+    if (!isNull(game)) {
+      let team: Team = game.teams.find(x => x.team_id == this.team_id);
+      if (!isUndefined(team)) {
+        const sum: number = +game.teams.map(x => x.win_rate).reduce((sum, x) => sum + x);
+        this.odds = (+team.win_rate * 100 / sum).toFixed(2);
+      }
     }
+
   }
 
 }

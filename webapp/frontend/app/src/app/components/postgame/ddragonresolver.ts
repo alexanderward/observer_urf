@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { map, mergeMap } from 'rxjs/operators';
+import { map, mergeMap, catchError } from 'rxjs/operators';
 import { LatestGameService } from 'src/app/services/latest-game.service';
 import { Game } from 'src/app/models/game.model';
 import { DdragonService } from 'src/app/services/ddragon.service';
-import { forkJoin } from 'rxjs';
+import { forkJoin, of } from 'rxjs';
+import { isNull } from 'util';
 
 @Injectable()
 export class PostGameResolver implements Resolve<any> {
@@ -14,7 +15,11 @@ export class PostGameResolver implements Resolve<any> {
     resolve(route: ActivatedRouteSnapshot) {
         let currentGame = null;
         return this.latestGameService.fetch().pipe(
+            catchError(x => of(null)),
             mergeMap((game: any) => {
+                if(isNull(game)){
+                    return of([null, null])
+                }
                 currentGame = game;
                 return forkJoin([this.ddragonService.summonerSpells(game.version), this.ddragonService.items(game.version)]);
             }),

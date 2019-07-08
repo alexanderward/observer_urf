@@ -11,6 +11,7 @@ DATABASES = {
         'ATOMIC_REQUESTS': True,
         'OPTIONS': {
             'sql_mode': 'traditional',
+            'charset': 'utf8mb4'
         }
     },
 }

@@ -1,4 +1,5 @@
 import json
+import traceback
 from urllib.parse import quote_plus
 
 from django.http import JsonResponse
@@ -13,6 +14,14 @@ from app.models import Game, BotCommand, TwitchUser
 from app.serializers import GameSerializer, PostGameSerializer, BotCommandSerializer
 
 
+def get_latest_game():
+    game = Game.objects.select_related('postgame'). \
+        prefetch_related('bets').order_by('-updated_at').filter(complete=False).first()
+    if not game:
+        raise ValidationError("No active games currently")
+    return game
+
+
 class GameViewSet(mixins.CreateModelMixin,
                   mixins.RetrieveModelMixin,
                   mixins.ListModelMixin,
@@ -24,11 +33,13 @@ class GameViewSet(mixins.CreateModelMixin,
     ordering_fields = '__all__'
     ordering = ('updated_at',)
 
-    def get_latest_game(self):
-        return self.queryset.order_by('-updated_at').first()
-
     # todo - abstract creates and put all behind auth
     def create(self, request, *args, **kwargs):
+        for game in Game.objects.filter(complete=False).all().iterator():
+            game.complete = True
+            for bet in game.bets.all().iterator():
+                bet.pay_out(winning_color=None)
+            game.save()
         return super().create(request, *args, **kwargs)
 
     def retrieve(self, request, *args, **kwargs):
@@ -40,13 +51,13 @@ class GameViewSet(mixins.CreateModelMixin,
     @action(detail=False, methods=['GET'], url_path='latest')
     def most_recent(self, request, *args, **kwargs):
         serializer = self.get_serializer_class()
-        game = self.get_latest_game()
+        game = get_latest_game()
         data = serializer(game).data
         return JsonResponse(data)
 
     @action(detail=False, methods=['GET'], url_path='odds')
     def odds(self, request, *args, **kwargs):
-        game = self.get_latest_game()
+        game = get_latest_game()
         data = dict(total=dict(blue=0, red=0), percentage=dict(blue=50, red=50))
         for bet in game.bets.all().iterator():
             data['total'][bet.color.lower()] += bet.amount
@@ -62,9 +73,7 @@ class GameViewSet(mixins.CreateModelMixin,
 
         game = self.get_object()
         game.postgame.data = request.data['data']
-        game.postgame.complete = True
         game.postgame.save()
-        game.save()
         data = json.loads(request.data['data'])
         [x.pay_out("red" if [x for x in data['teams'] if x['win'] == 'Win'][0]['teamId'] == 200 else "blue") for x in
          game.bets.all()]
@@ -94,7 +103,7 @@ class BotCommandsViewSet(mixins.ListModelMixin,
     def free(self, request, *args, **kwargs):
         user = TwitchUser.objects.get_or_create(user_id=request.GET.get("user_id"),
                                                 username=request.GET.get("username"))
-        game = Game.objects.order_by('-updated_at').first()
+        game = get_latest_game()
         try:
             user.get_free_points(game)
             message = "{} has successfully earned free points.  New balance is {}".format(user.username, user.balance)
@@ -118,7 +127,7 @@ class BotCommandsViewSet(mixins.ListModelMixin,
                     amount = int(amount)
                 except ValueError:
                     raise ValidationError("Amount must be a number")
-                game = Game.objects.order_by('-updated_at').first()
+                game = get_latest_game()
                 user = TwitchUser.objects.get_or_create(user_id=user_id, username=username)
                 user.bet(game, color, amount)
                 message = "{} has successfully wagered {} on the {} team. Current balance: {}".format(username,
@@ -137,7 +146,7 @@ class BotCommandsViewSet(mixins.ListModelMixin,
 
     @action(detail=False, methods=['GET'], url_path='game-info')
     def get_game_info(self, request, *args, **kwargs):
-        game = Game.objects.order_by('-updated_at').first()
+        game = get_latest_game()
         if not game:
             raise Http404
         participant = game.game_participants.first()

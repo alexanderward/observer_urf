@@ -31,7 +31,6 @@ class Team(BaseModel):
 
 class PostgameStats(BaseModel):
     data = models.TextField()
-    complete = models.BooleanField(default=False)
 
 
 class Game(BaseModel):
@@ -44,6 +43,7 @@ class Game(BaseModel):
     seed = models.CharField(max_length=32)
     updated_at = models.DateTimeField(auto_now=True)
     close_bets_at = models.DateTimeField()
+    complete = models.BooleanField(default=False)
 
 
 class BotCommand(BaseModel):
@@ -70,9 +70,9 @@ class TwitchUser(BaseModel):
 
     def bet(self, game, color, amount):
         if game.close_bets_at < timezone.now():
-            raise ValidationError("Betting is closed for this game.")
+            raise ValidationError("{} - Betting is closed for this game.".format(self.username))
         if amount > self.balance:
-            raise ValidationError("Insufficient balance.")
+            raise ValidationError("{} - Insufficient balance.".format(self.username))
         vote, created = Bet.objects.get_or_create(twitch_user=self, game=game, defaults={"amount": amount,
                                                                                          "color": color})
         if not created:
@@ -98,8 +98,11 @@ class Bet(BaseModel):
     complete = models.BooleanField(default=False)
 
     def pay_out(self, winning_color):
-        if not self.complete and winning_color.upper() == self.color:
+        if winning_color is None:
+            self.twitch_user.balance += self.amount
+        elif not self.complete and winning_color.upper() == self.color:
             self.twitch_user.balance += (self.amount * 2)
-            self.twitch_user.save()
-            self.complete = True
-            self.save()
+
+        self.twitch_user.save()
+        self.complete = True
+        self.save()

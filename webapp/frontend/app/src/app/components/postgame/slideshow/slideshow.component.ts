@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Game, GameParticipants } from 'src/app/models/game.model';
-import { isNullOrUndefined } from "util";
+import { isNullOrUndefined, isNull } from "util";
 export interface Tile {
   color: string;
   cols: number;
@@ -22,7 +22,7 @@ export class SlideshowComponent implements OnInit {
 
   ngOnInit() {
     this.game = this.route.snapshot.data.data.game;
-    if (this.game.postgame.complete) {
+    if (!isNull(this.game) && this.game.complete) {
       this.game.postgame.data = JSON.parse(this.game.postgame.data);
       let spells = {};
       Object.keys(this.route.snapshot.data.data.spells.data).forEach(key => {

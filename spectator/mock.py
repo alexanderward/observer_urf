@@ -9,7 +9,7 @@ def mock_insert_game(api, seed):
     path = "{}/{}".format("api_data", seed)
     if not os.path.exists(path):
         raise Exception("Seed does not exist")
-    for required_file in ["game", "pregame-stats", "postgame-stats"]:
+    for required_file in ["game", "pregame-stats"]:#, "postgame-stats"]:
         if not os.path.exists("{}/{}.json".format(path, required_file)):
             raise Exception("Missing {}.json".format(required_file))
     with open("{}/{}".format(path, "game.json"), 'r') as f:
@@ -19,4 +19,4 @@ def mock_insert_game(api, seed):
 
 if __name__ == '__main__':
     league_api = LeagueAPI("RGAPI-036aa75d-dc45-4f15-9eb0-a66cd68c47fd")
-    mock_insert_game(league_api, "3e866dbb18cd43e38e0d7f7449d0f92d")
+    mock_insert_game(league_api, "10d7862983b44191a4d3aeadaf468f1c")

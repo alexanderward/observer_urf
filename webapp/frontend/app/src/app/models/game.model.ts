@@ -29,8 +29,7 @@ export interface BannedChampions {
 }
 
 export interface Postgame {
-    data: any,
-    complete: boolean
+    data: any
 }
 
 export interface Game {
@@ -42,7 +41,8 @@ export interface Game {
     teams: Team[],
     game_participants: GameParticipants[],
     postgame: Postgame,
-    version: string
+    version: string,
+    complete: boolean
 }
 
 export enum League {

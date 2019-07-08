@@ -1,5 +1,5 @@
 <div class="full-height">
-  <ng-container *ngIf="game.postgame.complete">
+  <ng-container *ngIf="game?.postgame.complete">
 
     <carousel class="row align-items-center justify-content-center" [timer]="timer">
     <!-- <carousel class="row align-items-center justify-content-center"> -->
@@ -151,12 +151,12 @@
       <ng-container *carouselItem>
         <div class="slide-item container-fluid"
           style="background-repeat: no-repeat; background-size:100%; background: black; padding: 5px;">
-          <app-gifs [timer]="timer/3"></app-gifs>
+          <app-gifs [timer]="timer/2"></app-gifs>
         </div>
       </ng-container>
     </carousel>
   </ng-container>
-  <ng-container *ngIf="!game.postgame.complete">
+  <ng-container *ngIf="!game || !game.postgame.complete">
     <div class="winner-label font row">Something went wrong! We'll back shortly :)
     </div>
     <img class="error row" src="assets/urf.jpg">

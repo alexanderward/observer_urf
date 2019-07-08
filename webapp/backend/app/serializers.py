@@ -59,6 +59,7 @@ class GameSerializer(BaseSerializer):
         except Game.DoesNotExist:
             validated_data['postgame'] = PostgameStats.objects.create(data={})
             validated_data['close_bets_at'] = timezone.now() + timezone.timedelta(minutes=3)
+            validated_data['complete'] = False
             return super().create(validated_data)
         raise ValidationError("Game already Exists")
 
@@ -73,11 +74,12 @@ class GameSerializer(BaseSerializer):
     version = serializers.CharField()
     seed = serializers.CharField()
     close_bets_at = serializers.DateTimeField(read_only=True)
+    complete = serializers.BooleanField(read_only=True)
 
     class Meta:
         model = Game
         fields = '__all__'
-        read_only_fields = ('created_at', 'postgame', 'close_bets_at')
+        read_only_fields = ('created_at', 'postgame', 'close_bets_at', 'complete')
 
 
 class BotCommandSerializer(BaseSerializer):

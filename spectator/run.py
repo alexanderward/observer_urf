@@ -94,9 +94,13 @@ class Game(object):
             if "Failed to connect" in decoded or \
                     "Finished Play game" in decoded or \
                     "Process Force Terminating" in decoded:
+                logging.info(format_message(self.seed, "Game {} terminated.  Reason: {}".format(self.game['gameId'],
+                                                                                                decoded)))
                 return self.kill(error=True)
 
             elif "SetEndOfGameVideoActive" in decoded:
+                logging.info(format_message(self.seed, "Game {} ended.  Reason: {}".format(self.game['gameId'],
+                                                                                           decoded)))
                 return self.kill()
 
             elif "GAMESTATE_GAMELOOP EndRender & EndFrame" in decoded:

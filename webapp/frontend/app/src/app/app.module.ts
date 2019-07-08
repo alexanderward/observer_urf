@@ -49,10 +49,12 @@ export const routes = [
       {
         path: 'timer',
         component: TimerComponent,
+        resolve: { game: LatestGameResolver }
       },
       {
         path: 'bets',
-        component: BetsComponent
+        component: BetsComponent,
+        resolve: { game: LatestGameResolver }
       }
     ]
   },
