@@ -207,7 +207,7 @@ class LeagueAPI(object):
     def get_featured_games(self, blacklist_ids):
         logger.info(format_message(self.seed, "Generating featured games list"))
         for region in self.regions:
-            games = self.api.featured_games(region)
+            games = self.api.spectator.featured_games(region)
             for game_ in games['gameList']:
                 if game_['gameId'] not in blacklist_ids:
                     self.featured_games[MatchTypes.get_name_by_value(game_.

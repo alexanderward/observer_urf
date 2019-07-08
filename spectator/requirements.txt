@@ -2,3 +2,4 @@ requests
 keyboard
 riotwatcher
 simplejson
+pywin32
