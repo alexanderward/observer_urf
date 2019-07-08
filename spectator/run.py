@@ -279,7 +279,7 @@ def start_game(game, blacklist_ids, mock=False):
 
 
 def run():
-    api = LeagueAPI("RGAPI-036aa75d-dc45-4f15-9eb0-a66cd68c47fd")
+    api = LeagueAPI("RGAPI-2a1965e7-bc6d-4de9-b53e-3f5700190358")
     blacklist_ids = []
     while True:
         game = api.find_game(blacklist_ids)
