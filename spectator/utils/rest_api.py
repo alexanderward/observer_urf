@@ -51,10 +51,14 @@ def send_pregame_stats(stats):
     }
     resp = requests.post(url="{}/api/games/".format(api_endpoint), json=data)
     if resp.status_code != 201 and "Game already Exists" not in resp.text:
+        try:
+            response = resp.json()
+        except:
+            response = resp.text
         send_email("Failed to send pregame stats", {
             "url": "{}/api/games/".format(api_endpoint),
             "data": data,
-            "response": resp.json()
+            "response": response
         })
 
 
@@ -63,8 +67,12 @@ def send_postgame_stats(stats):
     resp = requests.post(url="{}/api/games/{}/postgame/".format(api_endpoint, stats.get("gameId")),
                          json={"data": json.dumps(stats)})
     if resp.status_code != 200:
+        try:
+            response = resp.json()
+        except:
+            response = resp.text
         send_email("Failed to send postgame stats", {
             "url": "{}/api/games/{}/postgame/".format(api_endpoint, stats.get("gameId")),
             "data": stats,
-            "response": resp.json()
+            "response": response
         })

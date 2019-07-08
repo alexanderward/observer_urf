@@ -1,1 +1,19 @@
-<p>bets works!</p>
+<div class="panel align-items-center justify-content-center">
+    <div class="panel-container show" style="width:100%;">
+        <div class="panel-content">
+            <div class="winner-label row text"><strong>Bets</strong></div>
+        </div>
+    </div>
+</div>
+<div class="panel align-items-center justify-content-center">
+    <div class="panel-container show" style="width:100%;">
+        <div class="panel-content">
+            <div>
+                <ngb-progressbar type="info" [value]="bluePercentage"><span class="text"><strong>{{blue}}</strong></span>
+                </ngb-progressbar>
+                <ngb-progressbar type="danger" [value]="redPercentage" style="direction: rtl;"><span
+                        class="text"><strong>{{red}}</strong></span></ngb-progressbar>
+            </div>
+        </div>
+    </div>
+</div>

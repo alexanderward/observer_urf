@@ -261,9 +261,8 @@ def start_game(game, blacklist_ids, mock=False):
             error = game.spectate()
             if not error:
                 game.send_postgame_stats()
-            # break
             logger.info("Intermission - Waiting ~2 minutes")
-            time.sleep(126)
+            time.sleep(180)
         else:
             game.send_postgame_stats()
         blacklist_ids = []

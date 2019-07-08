@@ -1,0 +1,35 @@
+:host ::ng-deep .bg-info {
+    background-color: blue!important;
+}
+
+:host ::ng-deep .bg-danger {
+    background-color: red!important;
+}
+
+:host ::ng-deep .progress {
+    display: flex;
+    height: 10rem;
+    overflow: hidden;
+    font-size: .75rem;
+    background-color: transparent;
+    border-radius: .25rem;
+}
+
+:host ::ng-deep .progress-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #007bff;
+    transition: width .6s ease;
+}
+
+.text{
+    text-align: center;
+    font-size: 100px;
+    /* font-weight: 700; */
+    /* height: 100%; */
+    font-family: 'Montserrat', sans-serif;
+}

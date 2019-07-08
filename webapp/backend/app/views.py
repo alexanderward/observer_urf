@@ -3,6 +3,7 @@ from urllib.parse import quote_plus
 
 from django.http import JsonResponse
 from django.http.response import Http404
+from django.utils import timezone
 from rest_framework import mixins
 from rest_framework.decorators import action
 from rest_framework.exceptions import ValidationError
@@ -23,6 +24,9 @@ class GameViewSet(mixins.CreateModelMixin,
     ordering_fields = '__all__'
     ordering = ('updated_at',)
 
+    def get_latest_game(self):
+        return self.queryset.order_by('-updated_at').first()
+
     # todo - abstract creates and put all behind auth
     def create(self, request, *args, **kwargs):
         return super().create(request, *args, **kwargs)
@@ -36,8 +40,20 @@ class GameViewSet(mixins.CreateModelMixin,
     @action(detail=False, methods=['GET'], url_path='latest')
     def most_recent(self, request, *args, **kwargs):
         serializer = self.get_serializer_class()
-        game = self.queryset.order_by('-updated_at').first()
+        game = self.get_latest_game()
         data = serializer(game).data
+        return JsonResponse(data)
+
+    @action(detail=False, methods=['GET'], url_path='odds')
+    def odds(self, request, *args, **kwargs):
+        game = self.get_latest_game()
+        data = dict(total=dict(blue=0, red=0), percentage=dict(blue=50, red=50))
+        for bet in game.bets.all().iterator():
+            data['total'][bet.color.lower()] += bet.amount
+        total = data['total']['red'] + data['total']['blue']
+        if total:
+            data['percentage']['red'] = (data['total']['red']/ total) * 100
+            data['percentage']['blue'] = (data['total']['blue']/ total) * 100
         return JsonResponse(data)
 
     @action(detail=True, methods=['POST'], url_path='postgame')
@@ -48,6 +64,7 @@ class GameViewSet(mixins.CreateModelMixin,
         game.postgame.data = request.data['data']
         game.postgame.complete = True
         game.postgame.save()
+        game.save()
         data = json.loads(request.data['data'])
         [x.pay_out("red" if [x for x in data['teams'] if x['win'] == 'Win'][0]['teamId'] == 200 else "blue") for x in
          game.bets.all()]
@@ -77,7 +94,7 @@ class BotCommandsViewSet(mixins.ListModelMixin,
     def free(self, request, *args, **kwargs):
         user = TwitchUser.objects.get_or_create(user_id=request.GET.get("user_id"),
                                                 username=request.GET.get("username"))
-        game = Game.objects.order_by('-created_at').first()
+        game = Game.objects.order_by('-updated_at').first()
         try:
             user.get_free_points(game)
             message = "{} has successfully earned free points.  New balance is {}".format(user.username, user.balance)
@@ -101,7 +118,7 @@ class BotCommandsViewSet(mixins.ListModelMixin,
                     amount = int(amount)
                 except ValueError:
                     raise ValidationError("Amount must be a number")
-                game = Game.objects.order_by('-created_at').first()
+                game = Game.objects.order_by('-updated_at').first()
                 user = TwitchUser.objects.get_or_create(user_id=user_id, username=username)
                 user.bet(game, color, amount)
                 message = "{} has successfully wagered {} on the {} team. Current balance: {}".format(username,
@@ -120,7 +137,7 @@ class BotCommandsViewSet(mixins.ListModelMixin,
 
     @action(detail=False, methods=['GET'], url_path='game-info')
     def get_game_info(self, request, *args, **kwargs):
-        game = Game.objects.order_by('-created_at').first()
+        game = Game.objects.order_by('-updated_at').first()
         if not game:
             raise Http404
         participant = game.game_participants.first()

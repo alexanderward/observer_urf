@@ -48,7 +48,7 @@ html, body {margin:0;padding:0;height:100%;overflow: hidden;}
     -ms-flex-direction: column;
     flex-direction: column;
     position: relative;
-    background-color: #030d0a;
+    background-color: #030d0a !important;
     -webkit-box-shadow: 0 0 13px 0 rgba(62,44,90,.08);
     box-shadow: 0 0 13px 0 rgba(62,44,90,.08);
     margin-bottom: 1.5rem;
@@ -152,3 +152,15 @@ html, body {margin:0;padding:0;height:100%;overflow: hidden;}
 .full-height{
     height: 100%;
 }
+
+.winner-label{
+    align-content: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 20px 20px;
+    color: white;
+    font-size: xx-large;
+    background: rgba(0,0,0,.54);
+    font-family: 'Montserrat', sans-serif;
+  }
