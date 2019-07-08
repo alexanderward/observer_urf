@@ -2,7 +2,7 @@ import json
 import os
 from uuid import uuid4
 
-from spectator.run import Game, LeagueAPI, start_game
+from run import Game, LeagueAPI, start_game
 
 
 def mock_insert_game(api, seed):

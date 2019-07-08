@@ -1,6 +1,6 @@
 import enum
 
-from spectator.utils.misc_functions import get_random_item
+from utils.misc_functions import get_random_item
 
 
 class BaseEnum(enum.Enum):

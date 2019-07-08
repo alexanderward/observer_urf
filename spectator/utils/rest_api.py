@@ -4,8 +4,8 @@ from functools import wraps
 
 import requests
 import pprint
-from spectator.utils.constants import api_endpoint
-from spectator.utils.gmail import send_email
+from utils.constants import api_endpoint
+from utils.gmail import send_email
 
 
 def wakeup_rds(func):

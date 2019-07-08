@@ -11,11 +11,11 @@ import requests
 from requests import HTTPError
 from riotwatcher import RiotWatcher
 
-from spectator.utils.spotify import Spotify
-from spectator.utils.enums import Region, MatchTypes, Leagues
-from spectator.utils.misc_functions import get_random_item, sort_list
-from spectator.utils.interval import RepeatedTimer
-from spectator.utils.rest_api import send_pregame_stats, send_postgame_stats, wakeup_rds
+from utils.spotify import Spotify
+from utils.enums import Region, MatchTypes, Leagues
+from utils.misc_functions import get_random_item, sort_list
+from utils.interval import RepeatedTimer
+from utils.rest_api import send_pregame_stats, send_postgame_stats, wakeup_rds
 import simplejson
 import logging
 
@@ -74,7 +74,7 @@ class Game(object):
         self.hud_view_toggle = RepeatedTimer(30, lambda: keyboard.send("x"))
 
     def spectate(self):
-        from spectator.utils.enums import SpectatorGrid
+        from utils.enums import SpectatorGrid
         url, port = SpectatorGrid[self.game['platformId']].value
         cmd = r'cd "C:\Riot Games\League of Legends\Game" && "League of Legends.exe" "8394" ' \
               r'"LeagueClient.exe" "" "' \
@@ -207,7 +207,7 @@ class LeagueAPI(object):
     def get_featured_games(self, blacklist_ids):
         logger.info(format_message(self.seed, "Generating featured games list"))
         for region in self.regions:
-            games = self.api.spectator.featured_games(region)
+            games = self.api.featured_games(region)
             for game_ in games['gameList']:
                 if game_['gameId'] not in blacklist_ids:
                     self.featured_games[MatchTypes.get_name_by_value(game_.
