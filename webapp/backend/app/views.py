@@ -4,6 +4,7 @@ from urllib.parse import quote_plus
 
 from django.http import JsonResponse
 from django.http.response import Http404
+from django.shortcuts import redirect
 from django.utils import timezone
 from rest_framework import mixins
 from rest_framework.decorators import action
@@ -166,3 +167,7 @@ class BotCommandsViewSet(mixins.ListModelMixin,
         url = "https://ezre.al/live/{}/{}?utm_source=observerurf".format(regions[participant.region],
                                                                          quote_plus(participant.summoner_name))
         return JsonResponse({"url": url})
+
+
+def index(request):
+    return redirect("https://app.observerurf.com/")

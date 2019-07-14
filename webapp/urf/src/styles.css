@@ -1,0 +1,28 @@
+@import "assets/css/vendors.bundle.css";
+@import "assets/css/app.bundle.css";
+@import "assets/css/themes/cust-theme-12.css";
+
+.page-logo img {
+    border-radius: 75%;
+  }
+
+  .twitch-btn {
+    border-radius: unset !important;
+  }
+
+  .twitch-btn:hover {
+    background-color: #7d5bbe !important;
+    border-color: #7d5bbe !important;
+    color: #fff !important;
+  }
+
+  .card-title {
+    text-align: center;
+  }
+
+  .image1 {
+    width: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+  }
