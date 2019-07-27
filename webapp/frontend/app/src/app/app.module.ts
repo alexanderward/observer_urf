@@ -65,6 +65,7 @@ export const routes = [
         path: '',
         component: SlideshowComponent,
         resolve: { data: PostGameResolver },
+        data: { complete: true }
       },
       {
         path: 'gifs',

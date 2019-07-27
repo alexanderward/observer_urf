@@ -1,5 +1,5 @@
 <div class="full-height">
-  <ng-container *ngIf="game?.postgame.complete">
+  <ng-container *ngIf="game?.complete">
 
     <carousel class="row align-items-center justify-content-center" [timer]="timer">
     <!-- <carousel class="row align-items-center justify-content-center"> -->
@@ -156,7 +156,7 @@
       </ng-container>
     </carousel>
   </ng-container>
-  <ng-container *ngIf="!game || !game.postgame.complete">
+  <ng-container *ngIf="!game || !game.complete">
     <div class="winner-label font row">Something went wrong! We'll back shortly :)
     </div>
     <img class="error row" src="assets/urf.jpg">

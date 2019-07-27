@@ -11,7 +11,7 @@ export class LatestGameResolver implements Resolve<any> {
     constructor(private latestGameService: LatestGameService, private http: HttpClient) { }
 
     resolve(route: ActivatedRouteSnapshot) {
-        return this.latestGameService.fetch().pipe(
+        return this.latestGameService.fetch(route.data ? route.data: null).pipe(
             catchError(x => of(null))
         );
     }

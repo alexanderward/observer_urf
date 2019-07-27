@@ -14,7 +14,7 @@ export class PostGameResolver implements Resolve<any> {
 
     resolve(route: ActivatedRouteSnapshot) {
         let currentGame = null;
-        return this.latestGameService.fetch().pipe(
+        return this.latestGameService.fetch(route.data ? route.data: null).pipe(
             catchError(x => of(null)),
             mergeMap((game: any) => {
                 if(isNull(game)){
