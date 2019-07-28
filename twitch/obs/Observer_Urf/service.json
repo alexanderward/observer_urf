@@ -1,0 +1,8 @@
+{
+    "settings": {
+        "key": "live_22453537_G6ExtYBsJBFPdwEXJXMbc3GdEce85a",
+        "server": "rtmp://live-hou.twitch.tv/app",
+        "service": "Twitch"
+    },
+    "type": "rtmp_common"
+}
