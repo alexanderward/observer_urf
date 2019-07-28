@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
         <div class="panel-content">
         <i class="fa fa-twitch fa-5x" style="color: #6441a4"></i>  <span class="info-item">https://www.twitch.tv/observerurf</span><br>
         <i class="fa fa-keyboard-o fa-5x"></i><span class="info-item" style="margin-left: -5px;">New here? !commands</span><br>
-        <i class="fa fa-globe fa-5x"></i><span class="info-item" style="margin-left: 13px;">https://www.observerurf.com </span><br>
+        <i class="fa fa-globe fa-5x"></i><span class="info-item" style="margin-left: 13px;">https://app.observerurf.com </span><br>
         </div>
     </div>
   </div>

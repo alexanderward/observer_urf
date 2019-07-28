@@ -49,11 +49,16 @@
                                         </div>
                                         <div class="card">
                                             <div class="w-100 bg-fusion-50 rounded-top">
-                                                <a style="background-color: #6441a4; color: white;"
+                                                <a *ngIf="!inDevelopment" style="background-color: #6441a4; color: white;"
                                                     class="twitch-btn btn btn-pills btn-lg btn-block"
                                                     [routerLink]="['/dashboard']"><i class="fab fa-twitch"></i><span
                                                         style="margin-left: 1rem">Login with Twitch Account</span>
-                                                </a></div>
+                                                </a>
+                                                <a *ngIf="inDevelopment" style="background-color: #6441a4; color: white;"
+                                                    class="twitch-btn btn btn-pills btn-lg btn-block"><i class="fab fa-twitch"></i><span
+                                                        style="margin-left: 1rem">Login with Twitch Account (In Development - Disabled)</span>
+                                                </a>
+                                            </div>
                                             <div class="card-body">
                                                 <h5 class="card-title"><strong>Access the dashboard and view your stats
                                                         now! </strong></h5>
