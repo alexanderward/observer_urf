@@ -112,7 +112,7 @@ class Game(object):
                 keyboard.send('n')
                 keyboard.send('u')
                 keyboard.send('d')
-                # self.hud_view_toggle.start()
+                self.hud_view_toggle.start()
 
     def kill(self, error=False):
         if self.proc:
@@ -210,8 +210,11 @@ class LeagueAPI(object):
             games = self.api.spectator.featured_games(region)
             for game_ in games['gameList']:
                 if game_['gameId'] not in blacklist_ids:
-                    self.featured_games[MatchTypes.get_name_by_value(game_.
-                                                                     get("gameQueueConfigId"))][region].append(game_)
+                    try:
+                        self.featured_games[MatchTypes.get_name_by_value(game_.
+                                                                         get("gameQueueConfigId"))][region].append(game_)
+                    except:
+                        logger.warning("Unknown match type: {}".format(game_.get("gameQueueConfigId")))
 
         # Sort by timestamp descending
         for region in self.regions:
