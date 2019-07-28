@@ -118,7 +118,7 @@ class Game(object):
         if self.proc:
             if self.hud_view_toggle.is_running:
                 self.hud_view_toggle.stop()
-                time.sleep(.5)  # A small buffer so we don't get keystrokes after proc ends
+            self.send_postgame_stats()
             logger.info(format_message(self.seed, "Game {} ended.  Exiting spectator mode".format(self.game['gameId'])))
             subprocess.Popen("TASKKILL /F /PID {pid} /T".format(pid=self.proc.pid))
         time.sleep(1)  # small buffer needed for window to close
@@ -263,8 +263,6 @@ def start_game(game, blacklist_ids, mock=False):
         game.send_pregame_stats()
         if not mock:
             error = game.spectate()
-            if not error:
-                game.send_postgame_stats()
             logger.info("Intermission - Waiting ~2 minutes")
             time.sleep(180)
         else:
