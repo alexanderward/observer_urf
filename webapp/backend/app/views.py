@@ -74,6 +74,8 @@ class GameViewSet(mixins.CreateModelMixin,
         PostGameSerializer(data=request.data).is_valid(raise_exception=True)
 
         game = self.get_object()
+        game.complete = True
+        game.save()
         game.postgame.data = request.data['data']
         game.postgame.save()
         data = json.loads(request.data['data'])
