@@ -10,10 +10,12 @@ DATABASES = {
         'PORT': 3306,
         'ATOMIC_REQUESTS': True,
         'OPTIONS': {
-            'sql_mode': 'traditional',
-            'charset': 'utf8mb4'
+            'sql_mode': 'traditional'
         }
     },
 }
+use_charset = os.environ.get("use_utf8mb4", True)
+if use_charset != '0':
+    DATABASES['default']['OPTIONS']['charset'] = 'utf8mb4'
 
 DEBUG = True

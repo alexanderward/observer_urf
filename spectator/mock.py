@@ -2,7 +2,7 @@ import json
 import os
 from uuid import uuid4
 
-from run import Game, LeagueAPI, start_game
+from run import Game, LeagueAPI, start_game, complete_bets
 
 
 def mock_insert_game(api, seed):
@@ -20,5 +20,6 @@ def mock_insert_game(api, seed):
 
 
 if __name__ == '__main__':
-    league_api = LeagueAPI("RGAPI-40125f5e-20d1-482b-878f-b85c05b91a7b")
-    mock_insert_game(league_api, "886f43615c5b485a96b49fd7c85c8cf2")
+    # league_api = LeagueAPI("RGAPI-40125f5e-20d1-482b-878f-b85c05b91a7b")
+    # mock_insert_game(league_api, "886f43615c5b485a96b49fd7c85c8cf2")
+    complete_bets(3108556573, 200, False)
