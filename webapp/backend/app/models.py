@@ -69,6 +69,8 @@ class TwitchUser(BaseModel):
     objects = TwitchUserManager()
 
     def bet(self, game, color, amount):
+        if self.balance is None:
+            self.balance = 0
         if game.close_bets_at < timezone.now():
             raise ValidationError("{} - Betting is closed for this game.".format(self.username))
         if amount > self.balance:
@@ -82,6 +84,8 @@ class TwitchUser(BaseModel):
 
     def get_free_points(self, game):
         if self.free_points_game_id != game.id:
+            if self.balance is None:
+                self.balance = 0
             self.balance += 1000
             self.free_points_game_id = game.id
             self.save()
