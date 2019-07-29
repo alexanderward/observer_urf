@@ -5,7 +5,7 @@ Bugs:
 - Change betting close timer to be more accurate.  Store epoch and use that for the countdown for frontend.
 
 Misc:
-- Investigate frontend bug that causes postgame page to bomb due to bad data from postgame stats
+
 
 
 Notes:
