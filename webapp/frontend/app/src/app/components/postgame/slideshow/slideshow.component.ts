@@ -33,7 +33,7 @@ export class SlideshowComponent implements OnInit {
         winningTeam = winningTeam.teamId;
         this.participants = this.game.postgame.data.participants.map(participant => {
           participant.player = this.game.postgame.data.participantIdentities.find(x => x.participantId == participant.participantId).player;
-          participant.champion = this.game.game_participants.find(x => x.summoner_name == participant.player.summonerName).champion;
+          participant.champion = this.game.game_participants.find(x => x.summoner_name.replace(/\s/g, "") == participant.player.summonerName.replace(/\s/g, "")).champion;
           participant.won = participant.teamId == winningTeam;
           const spell1 = spells[participant.spell1Id];
           const spell2 = spells[participant.spell2Id];

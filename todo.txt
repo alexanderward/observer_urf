@@ -1,0 +1,21 @@
+New Features:
+- Upload game files instead of local saving
+
+Bugs:
+- Change betting close timer to be more accurate.  Store epoch and use that for the countdown for frontend.
+
+Misc:
+- Investigate frontend bug that causes postgame page to bomb due to bad data from postgame stats
+
+
+Notes:
+
+
+https://api.twitch.tv/kraken/oauth2/authorize?response_type=code&client_id=aqzxc0g0rygyfz3990vu4ho14nnkte&redirect_uri=http://localhost:4200&scope=user_read openid
+
+https://id.twitch.tv/oauth2/authorize?scope=user_read&response_type=token&approval_prompt=auto&redirect_uri=http://localhost:4200&client_id=aqzxc0g0rygyfz3990vu4ho14nnkte
+https://api.twitch.tv/helix/users - Use token returned
+
+
+
+https://api.twitch.tv/kraken/user

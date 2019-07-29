@@ -21,4 +21,4 @@ def mock_insert_game(api, seed):
 
 if __name__ == '__main__':
     league_api = LeagueAPI("RGAPI-40125f5e-20d1-482b-878f-b85c05b91a7b")
-    mock_insert_game(league_api, "fc2de72a75c64a5c9434fc151ae76884")
+    mock_insert_game(league_api, "886f43615c5b485a96b49fd7c85c8cf2")
