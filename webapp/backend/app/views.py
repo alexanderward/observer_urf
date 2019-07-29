@@ -37,11 +37,6 @@ class GameViewSet(mixins.CreateModelMixin,
 
     # todo - abstract creates and put all behind auth
     def create(self, request, *args, **kwargs):
-        for game in Game.objects.filter(complete=False).all().iterator():
-            game.complete = True
-            for bet in game.bets.all().iterator():
-                bet.pay_out(winning_color=None)
-            game.save()
         return super().create(request, *args, **kwargs)
 
     def retrieve(self, request, *args, **kwargs):
@@ -72,15 +67,11 @@ class GameViewSet(mixins.CreateModelMixin,
     @action(detail=True, methods=['POST'], url_path='postgame')
     def postgame_stats_create(self, request, *args, **kwargs):
         PostGameSerializer(data=request.data).is_valid(raise_exception=True)
-
         game = self.get_object()
         game.complete = True
         game.save()
         game.postgame.data = request.data['data']
         game.postgame.save()
-        data = json.loads(request.data['data'])
-        [x.pay_out("red" if [x for x in data['teams'] if x['win'] == 'Win'][0]['teamId'] == 200 else "blue") for x in
-         game.bets.all()]
         serializer = self.get_serializer_class()
         return JsonResponse(serializer(game).data)
 

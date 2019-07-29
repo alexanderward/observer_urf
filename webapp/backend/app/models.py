@@ -106,3 +106,4 @@ class Bet(BaseModel):
         self.twitch_user.save()
         self.complete = True
         self.save()
+        return self

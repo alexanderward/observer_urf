@@ -22,7 +22,7 @@ def wakeup_rds(func):
     return function_wrapper
 
 
-@wakeup_rds
+# @wakeup_rds
 def send_pregame_stats(stats):
     teams = []
     players = []
@@ -62,7 +62,7 @@ def send_pregame_stats(stats):
         })
 
 
-@wakeup_rds
+# @wakeup_rds
 def send_postgame_stats(stats):
     resp = requests.post(url="{}/api/games/{}/postgame/".format(api_endpoint, stats.get("gameId")),
                          json={"data": json.dumps(stats)})

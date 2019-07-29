@@ -1,6 +1,7 @@
 import json
 import smtplib
-
+import logging
+logger = logging.getLogger("spectator")
 
 def send_email(subject, text):
     if isinstance(text, dict):
@@ -16,6 +17,7 @@ def send_email(subject, text):
     server.ehlo()
     server.starttls()
     server.login(gmail_sender, gmail_passwd)
+    logger.error(text)
 
     body = '\r\n'.join(['To: %s' % to,
                         'From: %s' % gmail_sender,

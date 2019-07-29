@@ -2,6 +2,7 @@ import json
 import os
 import subprocess
 import sys
+import threading
 import time
 import traceback
 from uuid import uuid4
@@ -39,6 +40,16 @@ logger.addHandler(ch)
 
 def format_message(seed, message):
     return "Seed:{} - {}".format(seed, message)
+
+
+def complete_bets(game_id, winner, complete_games=False):
+    owd = os.getcwd()
+    os.chdir('../webapp/backend')
+    cmd = r'python manage.py pay_out_bets {} {}'.format(game_id, winner)
+    if complete_games:
+        cmd += " --complete_games"
+    subprocess.check_call(cmd)
+    os.chdir(owd)
 
 
 def save_fetched_data(name, seed, data, subfolder=None):
@@ -127,6 +138,9 @@ class Game(object):
         return error
 
     def send_postgame_stats(self, stats=None):
+        block = False
+        if stats:
+            block = True
         while not stats:
             try:
                 logger.info(format_message(self.seed, "Retrieving postgame "
@@ -138,7 +152,16 @@ class Game(object):
                 time.sleep(5)
         logger.info(format_message(self.seed, "Sending postgame stats for game: {}".format(self.game['gameId'])))
         save_fetched_data("postgame-stats", self.seed, stats)
+        balance_bets = threading.Thread(name='balance_bets', target=complete_bets,
+                                        args=[self.game['gameId'],
+                                              [x for x in stats['teams']
+                                               if x['win'] == 'Win'][0]['teamId'],
+                                              not block])
+        balance_bets.setDaemon(True)
+        balance_bets.start()
         send_postgame_stats(stats)
+        if block:
+            balance_bets.join()
 
     def send_pregame_stats(self):
         # Can use these details as a bot command since participants not in rendered order
@@ -212,7 +235,8 @@ class LeagueAPI(object):
                 if game_['gameId'] not in blacklist_ids:
                     try:
                         self.featured_games[MatchTypes.get_name_by_value(game_.
-                                                                         get("gameQueueConfigId"))][region].append(game_)
+                                                                         get("gameQueueConfigId"))][region].append(
+                            game_)
                     except:
                         logger.warning("Unknown match type: {}".format(game_.get("gameQueueConfigId")))
 
@@ -261,15 +285,15 @@ class LeagueAPI(object):
                     return Game(get_random_item(self.featured_games[match_type][region]), self.api, self.seed)
 
 
-def start_game(game, blacklist_ids, mock=False):
+def start_game(game, blacklist_ids, postgame_stats=None):
     try:
         game.send_pregame_stats()
-        if not mock:
+        if not postgame_stats:
             error = game.spectate()
             logger.info("Intermission - Waiting ~2 minutes")
             time.sleep(180)
         else:
-            game.send_postgame_stats()
+            game.send_postgame_stats(postgame_stats)
         blacklist_ids = []
     except:
         logger.error(format_message(game.seed, "Something went wrong.  Blacklisting ID for game"
