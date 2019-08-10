@@ -1,5 +1,6 @@
 New Features:
 - Upload game files instead of local saving
+- Add correctly guessed volumn to bet for future accuracy stat
 
 Bugs:
 - Change betting close timer to be more accurate.  Store epoch and use that for the countdown for frontend.
