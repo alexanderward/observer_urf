@@ -18,7 +18,7 @@ def get_latest_game(request):
     if complete:
         complete = True if complete in ['true', 'T', 'True', 'TRUE', True] else False
     game = Game.objects.select_related('postgame'). \
-        prefetch_related('bets').order_by('-updated_at').filter(complete=complete).first()
+        prefetch_related('bets').order_by('-created_at').filter(complete=complete).first()
     if not game:
         raise ValidationError("No active games currently")
     return game
@@ -33,7 +33,7 @@ class GameViewSet(mixins.CreateModelMixin,
         prefetch_related('bets')
     serializer_class = GameSerializer
     ordering_fields = '__all__'
-    ordering = ('updated_at',)
+    ordering = ('created_at',)
 
     # todo - abstract creates and put all behind auth
     def create(self, request, *args, **kwargs):
