@@ -75,9 +75,9 @@ class Game(object):
         self.seed = seed
         logger.info(format_message(self.seed, "Game found: {}".format(game['gameId'])))
         save_fetched_data("game", seed, game)
-        self.version = self.check_version()
+        self.version, drag_version = self.check_version()
         champions_data = requests.get("https://ddragon.leagueoflegends.com/cdn/{}/data/en_US/champion.json"
-                                      "".format(self.version)).json()
+                                      "".format(drag_version)).json()
         for key, value in champions_data['data'].items():
             self.champions[value["key"]] = value
         self.game = game
@@ -100,7 +100,7 @@ class Game(object):
                     break
             subprocess.Popen("TASKKILL /F /PID {pid} /T".format(pid=proc.pid))
             client_version = get_file_info(r"C:\Riot Games\League of Legends\LeagueClient.exe")['ProductVersion']
-        return client_version
+        return client_version, drag_version
 
     def spectate(self):
         from utils.enums import SpectatorGrid
