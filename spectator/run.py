@@ -12,6 +12,7 @@ import requests
 from requests import HTTPError
 from riotwatcher import RiotWatcher
 
+from utils.file_info import get_file_info
 from utils.spotify import Spotify
 from utils.enums import Region, MatchTypes, Leagues
 from utils.misc_functions import get_random_item, sort_list
@@ -74,15 +75,32 @@ class Game(object):
         self.seed = seed
         logger.info(format_message(self.seed, "Game found: {}".format(game['gameId'])))
         save_fetched_data("game", seed, game)
-        self.version = requests.get("https://ddragon.leagueoflegends.com/api/versions.json").json()[0]
+        self.version, drag_version = self.check_version()
         champions_data = requests.get("https://ddragon.leagueoflegends.com/cdn/{}/data/en_US/champion.json"
-                                      "".format(self.version)).json()
+                                      "".format(drag_version)).json()
         for key, value in champions_data['data'].items():
             self.champions[value["key"]] = value
         self.game = game
         self.api = api
         self.proc = None
         self.hud_view_toggle = RepeatedTimer(30, lambda: keyboard.send("x"))
+
+    def check_version(self):
+        drag_version = requests.get("https://ddragon.leagueoflegends.com/api/versions.json").json()[0]
+        client_version = get_file_info(r"C:\Riot Games\League of Legends\LeagueClient.exe")['ProductVersion']
+        if drag_version > client_version:
+            logging.info(format_message(self.seed, "Client version {} out of date.  Ddrag version: "
+                                                   "{}".format(drag_version, client_version)))
+            cmd = r"C:\Riot Games\League of Legends\LeagueClient.exe"
+            proc = subprocess.Popen(cmd,  stdout=subprocess.PIPE, stderr=subprocess.STDOUT, stdin=subprocess.PIPE,
+                                    shell=True)
+            for line in iter(proc.stdout.readline, b''):
+                decoded = line.decode(sys.stdout.encoding)
+                if "Patcher lock status is now: inactive" in decoded:
+                    break
+            subprocess.Popen("TASKKILL /F /PID {pid} /T".format(pid=proc.pid))
+            client_version = get_file_info(r"C:\Riot Games\League of Legends\LeagueClient.exe")['ProductVersion']
+        return client_version, drag_version
 
     def spectate(self):
         from utils.enums import SpectatorGrid
