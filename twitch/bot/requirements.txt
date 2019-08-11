@@ -1,0 +1,2 @@
+irc==17.1
+requests
