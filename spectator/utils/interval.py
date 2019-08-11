@@ -1,4 +1,4 @@
-from threading import Timer
+from threading import Timer, Thread
 
 
 class RepeatedTimer(object):
@@ -18,9 +18,21 @@ class RepeatedTimer(object):
     def start(self):
         if not self.is_running:
             self._timer = Timer(self.interval, self._run)
+            self._timer.daemon = True
             self._timer.start()
             self.is_running = True
 
     def stop(self):
         self._timer.cancel()
         self.is_running = False
+
+
+class Query(Thread):
+    def __init__(self, interval, callback):
+        super().__init__()
+        self.daemon = True
+        self.interval = interval
+        self.callback = callback
+
+    def run(self):
+        self.callback(interval=self.interval)

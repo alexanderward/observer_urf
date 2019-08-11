@@ -16,7 +16,7 @@ from utils.file_info import get_file_info
 from utils.spotify import Spotify
 from utils.enums import Region, MatchTypes, Leagues
 from utils.misc_functions import get_random_item, sort_list
-from utils.interval import RepeatedTimer
+from utils.interval import RepeatedTimer, Query
 from utils.rest_api import send_pregame_stats, send_postgame_stats, wakeup_rds
 import simplejson
 import logging
@@ -73,6 +73,7 @@ class Game(object):
 
     def __init__(self, game, api, seed):
         self.seed = seed
+        self.end_poll = None
         logger.info(format_message(self.seed, "Game found: {}".format(game['gameId'])))
         save_fetched_data("game", seed, game)
         self.version = self.check_version()
@@ -92,7 +93,7 @@ class Game(object):
             logging.info(format_message(self.seed, "Client version {} out of date.  Ddrag version: "
                                                    "{}".format(drag_version, client_version)))
             cmd = r"C:\Riot Games\League of Legends\LeagueClient.exe"
-            proc = subprocess.Popen(cmd,  stdout=subprocess.PIPE, stderr=subprocess.STDOUT, stdin=subprocess.PIPE,
+            proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, stdin=subprocess.PIPE,
                                     shell=True)
             for line in iter(proc.stdout.readline, b''):
                 decoded = line.decode(sys.stdout.encoding)
@@ -115,49 +116,50 @@ class Game(object):
         self.proc = subprocess.Popen(cmd,
                                      stdout=subprocess.PIPE, stderr=subprocess.STDOUT, stdin=subprocess.PIPE,
                                      shell=True)
-        with open('bb.txt', 'w') as f:
-            for line in iter(self.proc.stdout.readline, b''):
-                decoded = line.decode(sys.stdout.encoding)
-                print(decoded)
-                f.write(decoded)
+        for line in iter(self.proc.stdout.readline, b''):
+            decoded = line.decode(sys.stdout.encoding)
+            # print(decoded)
 
-                if "Failed to connect" in decoded or \
-                        "Finished Play game" in decoded or \
-                        "Process Force Terminating" in decoded:
-                    logging.info(format_message(self.seed, "Game {} terminated.  Reason: {}".format(self.game['gameId'],
-                                                                                                    decoded)))
-                    return self.kill(error=True)
+            if "Failed to connect" in decoded or \
+                    "Finished Play game" in decoded or \
+                    "Process Force Terminating" in decoded:
+                logging.info(format_message(self.seed, "Game {} terminated.  Reason: {}".format(self.game['gameId'],
+                                                                                                decoded)))
+                return self.kill(error=True)
 
-                elif "SetEndOfGameVideoActive" in decoded or\
-                        "LCURemotingClient: Unable to connect to app process." in decoded:
-                    logging.info(format_message(self.seed, "Game {} ended.  Reason: {}".format(self.game['gameId'],
-                                                                                               decoded)))
-                    return self.kill()
+            elif "SetEndOfGameVideoActive" in decoded:
+                logging.info(format_message(self.seed, "Game {} ended.  Reason: {}".format(self.game['gameId'],
+                                                                                           decoded)))
+                return self.kill()
 
-                elif "GAMESTATE_GAMELOOP EndRender & EndFrame" in decoded:
-                    logger.info(format_message(self.seed, "Game {} started.  Pausing music and setting up"
-                                                          " UI".format(self.game['gameId'])))
-                    Spotify.pause()
-                    # Sets up UI
-                    keyboard.send('o')
-                    keyboard.send('n')
-                    keyboard.send('u')
-                    keyboard.send('d')
-                    self.hud_view_toggle.start()
+            elif "GAMESTATE_GAMELOOP EndRender & EndFrame" in decoded:
+                logger.info(format_message(self.seed, "Game {} started.  Pausing music and setting up"
+                                                      " UI".format(self.game['gameId'])))
+                Spotify.pause()
+                # Sets up UI
+                keyboard.send('o')
+                keyboard.send('n')
+                keyboard.send('u')
+                keyboard.send('d')
+                self.hud_view_toggle.start()
+            elif "LCURemotingClient: Unable to connect to app process." in decoded and self.end_poll is None:
+                self.end_poll = Query(interval=20, callback=self.kill)
+                self.end_poll.start()
 
-    def kill(self, error=False):
+    def kill(self, error=False, interval=None):
         if self.proc:
+            self.send_postgame_stats(interval=interval)
+            logger.info(format_message(self.seed, "Game {} ended.  Exiting spectator mode".format(self.game['gameId'])))
             if self.hud_view_toggle.is_running:
                 self.hud_view_toggle.stop()
-            self.send_postgame_stats()
-            logger.info(format_message(self.seed, "Game {} ended.  Exiting spectator mode".format(self.game['gameId'])))
+            time.sleep(1)
             subprocess.Popen("TASKKILL /F /PID {pid} /T".format(pid=self.proc.pid))
         time.sleep(1)  # small buffer needed for window to close
         logger.info(format_message(self.seed, "Starting music"))
         Spotify.next()
         return error
 
-    def send_postgame_stats(self, stats=None):
+    def send_postgame_stats(self, stats=None, interval=20):
         block = False
         if stats:
             block = True
@@ -168,8 +170,8 @@ class Game(object):
                 stats = self.api.match.by_id(self.game.get('platformId'), self.game.get('gameId'))
             except Exception as e:
                 logger.warning(format_message(self.seed, "Stats not ready yet.  "
-                                                         "Waiting 20 seconds. Error: {}".format(str(e))))
-                time.sleep(20)
+                                                         "Waiting {} seconds. Error: {}".format(interval, str(e))))
+                time.sleep(interval)
         logger.info(format_message(self.seed, "Sending postgame stats for game: {}".format(self.game['gameId'])))
         save_fetched_data("postgame-stats", self.seed, stats)
         balance_bets = threading.Thread(name='balance_bets', target=complete_bets,
