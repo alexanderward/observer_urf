@@ -252,15 +252,18 @@ class LeagueAPI(object):
     def get_featured_games(self, blacklist_ids):
         logger.info(format_message(self.seed, "Generating featured games list"))
         for region in self.regions:
-            games = self.api.spectator.featured_games(region)
-            for game_ in games['gameList']:
-                if game_['gameId'] not in blacklist_ids:
-                    try:
-                        self.featured_games[MatchTypes.get_name_by_value(game_.
-                                                                         get("gameQueueConfigId"))][region].append(
-                            game_)
-                    except:
-                        logger.warning("Unknown match type: {}".format(game_.get("gameQueueConfigId")))
+            try:
+                games = self.api.spectator.featured_games(region)
+                for game_ in games['gameList']:
+                    if game_['gameId'] not in blacklist_ids:
+                        try:
+                            self.featured_games[MatchTypes.get_name_by_value(game_.
+                                                                             get("gameQueueConfigId"))][region].append(
+                                game_)
+                        except:
+                            logger.warning("Unknown match type: {}".format(game_.get("gameQueueConfigId")))
+            except Exception as e:
+                logger.warning("Failed to fetch featured games for region: {}".format(region))
 
         # Sort by timestamp descending
         for region in self.regions:
