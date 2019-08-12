@@ -1,4 +1,5 @@
 import json
+import msvcrt
 import os
 import subprocess
 import sys
@@ -9,6 +10,7 @@ from uuid import uuid4
 
 import keyboard
 import requests
+import win32file
 from requests import HTTPError
 from riotwatcher import RiotWatcher
 
@@ -16,7 +18,7 @@ from utils.file_info import get_file_info
 from utils.spotify import Spotify
 from utils.enums import Region, MatchTypes, Leagues
 from utils.misc_functions import get_random_item, sort_list
-from utils.interval import RepeatedTimer, Query
+from utils.interval import RepeatedTimer, AsyncTask
 from utils.rest_api import send_pregame_stats, send_postgame_stats, wakeup_rds
 import simplejson
 import logging
@@ -102,6 +104,31 @@ class Game(object):
             subprocess.Popen("TASKKILL /F /PID {pid} /T".format(pid=proc.pid))
         return drag_version
 
+    def check_line(self, line):
+        decoded = line.decode(sys.stdout.encoding)
+        if "Failed to connect" in decoded or \
+                "Finished Play game" in decoded or \
+                "Process Force Terminating" in decoded:
+            logging.info(format_message(self.seed, "Game {} terminated.  Reason: {}".format(self.game['gameId'],
+                                                                                            decoded)))
+            return self.kill(error=True)
+
+        elif "SetEndOfGameVideoActive" in decoded:
+            logging.info(format_message(self.seed, "Game {} ended.  Reason: {}".format(self.game['gameId'],
+                                                                                       decoded)))
+            return self.kill()
+
+        elif "GAMESTATE_GAMELOOP EndRender & EndFrame" in decoded:
+            logger.info(format_message(self.seed, "Game {} started.  Pausing music and setting up"
+                                                  " UI".format(self.game['gameId'])))
+            Spotify.pause()
+            # Sets up UI
+            keyboard.send('o')
+            keyboard.send('n')
+            keyboard.send('u')
+            keyboard.send('d')
+            self.hud_view_toggle.start()
+
     def spectate(self):
         from utils.enums import SpectatorGrid
         url, port = SpectatorGrid[self.game['platformId']].value
@@ -112,48 +139,29 @@ class Game(object):
                                                              self.game['gameId'], self.game['platformId'])
 
         logger.info(format_message(self.seed, "Starting spectator mode for game: {}".format(self.game['gameId'])))
-
         self.proc = subprocess.Popen(cmd,
                                      stdout=subprocess.PIPE, stderr=subprocess.STDOUT, stdin=subprocess.PIPE,
                                      shell=True)
+        self.end_poll = AsyncTask(callback=lambda: self.kill(False, 20, True))
+        self.end_poll.start()
         for line in iter(self.proc.stdout.readline, b''):
-            decoded = line.decode(sys.stdout.encoding)
-            # print(decoded)
+            self.check_line(line)
 
-            if "Failed to connect" in decoded or \
-                    "Finished Play game" in decoded or \
-                    "Process Force Terminating" in decoded:
-                logging.info(format_message(self.seed, "Game {} terminated.  Reason: {}".format(self.game['gameId'],
-                                                                                                decoded)))
-                return self.kill(error=True)
-
-            elif "SetEndOfGameVideoActive" in decoded:
-                logging.info(format_message(self.seed, "Game {} ended.  Reason: {}".format(self.game['gameId'],
-                                                                                           decoded)))
-                return self.kill()
-
-            elif "GAMESTATE_GAMELOOP EndRender & EndFrame" in decoded:
-                logger.info(format_message(self.seed, "Game {} started.  Pausing music and setting up"
-                                                      " UI".format(self.game['gameId'])))
-                Spotify.pause()
-                # Sets up UI
-                keyboard.send('o')
-                keyboard.send('n')
-                keyboard.send('u')
-                keyboard.send('d')
-                self.hud_view_toggle.start()
-            elif "LCURemotingClient: Unable to connect to app process." in decoded and self.end_poll is None:
-                self.end_poll = Query(interval=20, callback=self.kill)
-                self.end_poll.start()
-
-    def kill(self, error=False, interval=None):
+    def kill(self, error=False, interval=None, wait=False):
         if self.proc:
-            self.send_postgame_stats(interval=interval)
+            stats = self.send_postgame_stats(interval=interval)
+            if wait:
+                time_end = (stats['gameCreation'] / 1000) + stats['gameDuration'] + 185
+                logger.info(format_message(self.seed, "Game {} ended.  Waiting until epoch >"
+                                                      " {}".format(self.game['gameId'],  time_end)))
+                while time_end > time.time():
+                    time.sleep(1)
             logger.info(format_message(self.seed, "Game {} ended.  Exiting spectator mode".format(self.game['gameId'])))
             if self.hud_view_toggle.is_running:
                 self.hud_view_toggle.stop()
             time.sleep(1)
             subprocess.Popen("TASKKILL /F /PID {pid} /T".format(pid=self.proc.pid))
+            del self.end_poll
         time.sleep(1)  # small buffer needed for window to close
         logger.info(format_message(self.seed, "Starting music"))
         Spotify.next()
@@ -184,6 +192,7 @@ class Game(object):
         send_postgame_stats(stats)
         if block:
             balance_bets.join()
+        return stats
 
     def send_pregame_stats(self):
         # Can use these details as a bot command since participants not in rendered order

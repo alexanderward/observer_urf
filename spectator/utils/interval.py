@@ -27,12 +27,11 @@ class RepeatedTimer(object):
         self.is_running = False
 
 
-class Query(Thread):
-    def __init__(self, interval, callback):
+class AsyncTask(Thread):
+    def __init__(self, callback):
         super().__init__()
         self.daemon = True
-        self.interval = interval
         self.callback = callback
 
     def run(self):
-        self.callback(interval=self.interval)
+        self.callback()
